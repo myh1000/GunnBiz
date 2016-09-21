@@ -1,0 +1,401 @@
+<html lang="en"><head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" type="image/png" href="img/favicon.png">
+
+    <title><%= title %></title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top navbar-scroll" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">Gunn FBLA</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="news">News</a>
+                    </li>
+                    <li>
+                        <a class="nav-bold" href="about">About</a>
+                    </li>
+                    <li>
+                        <a href="events">Events</a>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown">Projects <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="projects">About Projects</a>
+                            </li><li>
+                                <a href="ae">American Enterprise</a>
+                            </li>
+                            <li>
+                                <a href="pb">Partnership with Business</a>
+                            </li>
+                            <li>
+                                <a href="cs">Community Service</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <% if (login) { %>
+                        <li>
+                            <a href="profile">Profile</a>
+                        </li>
+                    <% } %>
+                    <li>
+                        <% if (login) { %>
+                            <a href="logout">Logout</a>
+                        <% }else{ %>
+                            <a href="login">Login</a>
+                        <% } %>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+     	<div class="row heading">
+    		<h1>Chapter History</h1>
+    	</div>
+        <div class="row">
+            <p>Gunn FBLA was created in 2014 by Presidents Randy Wu and Joseph Lai. The chapter grew rapidly and only one year later it has more than a hundred members. In 2015, Gunn had four members go to nationals, a remarkable feat for a first-year chapter. In 2016, that number was three times as large.</p>
+        </div>
+    </div>
+
+    <br>
+
+    <div class="container" id="officers">
+        <div class="row heading">
+            <h1>Our Team</h1>
+        </div>
+        <div class="row officer">
+            <div class="col-md-3">
+                <img class="img-responsive" src="img/officers/randy.jpg">
+            </div>
+            <div class="col-md-8">
+                <div class="row name">
+                    <h1>Randy Wu</h1>
+                    <h3>President</h3>
+                </div>
+                <div class="row">
+                    <p>A god among men. Quisque pretium dolor non mi eleifend dictum. Aenean fringilla viverra elit pretium fringilla. Duis a dolor bibendum, luctus justo vel, rutrum nunc. Pellentesque ex massa, dictum at laoreet non, aliquam nec urna. Duis a dolor bibendum, luctus justo vel, rutrum nunc. </p>
+                </div>
+            </div>
+        </div>
+        <div class="row officer">
+            <div class="col-md-3">
+                <img class="img-responsive" src="img/officers/joseph_lai.jpg">
+            </div>
+            <div class="col-md-8">
+                <div class="row name">
+                    <h1>Joseph Lai</h1>
+                    <h3>President</h3>
+                </div>
+                <div class="row">
+                    <p>Quisque pretium dolor non mi eleifend dictum. Aenean fringilla viverra elit pretium fringilla. Duis a dolor bibendum, luctus justo vel, rutrum nunc. Pellentesque ex massa, dictum at laoreet non, aliquam nec urna. Duis a dolor bibendum, luctus justo vel, rutrum nunc. </p>
+                </div>
+            </div>
+        </div>
+        <div class="row officer">
+            <div class="col-md-3">
+                <img class="img-responsive" src="img/officers/joseph_ng.jpg">
+            </div>
+            <div class="col-md-8">
+                <div class="row name">
+                    <h1>Joseph Ng</h1>
+                    <h3>Vice President of Competitions</h3>
+                </div>
+                <div class="row">
+                    <p>Quisque pretium dolor non mi eleifend dictum. Aenean fringilla viverra elit pretium fringilla. Duis a dolor bibendum, luctus justo vel, rutrum nunc. Pellentesque ex massa, dictum at laoreet non, aliquam nec urna. Duis a dolor bibendum, luctus justo vel, rutrum nunc. </p>
+                </div>
+            </div>
+        </div>
+        <div class="row officer">
+            <div class="col-md-3">
+                <img class="img-responsive" src="img/officers/ben.jpg">
+            </div>
+            <div class="col-md-8">
+                <div class="row name">
+                    <h1>Benjamin Owens</h1>
+                    <h3>Vice President of Technology</h3>
+                </div>
+                <div class="row">
+                    <p>Quisque pretium dolor non mi eleifend dictum. Aenean fringilla viverra elit pretium fringilla. Duis a dolor bibendum, luctus justo vel, rutrum nunc. Pellentesque ex massa, dictum at laoreet non, aliquam nec urna. Duis a dolor bibendum, luctus justo vel, rutrum nunc. </p>
+                </div>
+            </div>
+        </div>
+        <div class="row officer">
+            <div class="col-md-3">
+                <img class="img-responsive" src="img/officers/bryan.jpg">
+            </div>
+            <div class="col-md-8">
+                <div class="row name">
+                    <h1>Bryan Owens</h1>
+                    <h3>Vice President of Fundraising</h3>
+                </div>
+                <div class="row">
+                    <p>Quisque pretium dolor non mi eleifend dictum. Aenean fringilla viverra elit pretium fringilla. Duis a dolor bibendum, luctus justo vel, rutrum nunc. Pellentesque ex massa, dictum at laoreet non, aliquam nec urna. Duis a dolor bibendum, luctus justo vel, rutrum nunc. </p>
+                </div>
+            </div>
+        </div>
+        <div class="row officer">
+            <div class="col-md-3">
+                <img class="img-responsive" src="img/officers/michael.png">
+            </div>
+            <div class="col-md-8">
+                <div class="row name">
+                    <h1>Michael Song</h1>
+                    <h3>Treasurer</h3>
+                </div>
+                <div class="row">
+                    <p>Quisque pretium dolor non mi eleifend dictum. Aenean fringilla viverra elit pretium fringilla. Duis a dolor bibendum, luctus justo vel, rutrum nunc. Pellentesque ex massa, dictum at laoreet non, aliquam nec urna. Duis a dolor bibendum, luctus justo vel, rutrum nunc.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row officer">
+            <div class="col-md-3">
+                <img class="img-responsive" src="img/officers/iris.jpg">
+            </div>
+            <div class="col-md-8">
+                <div class="row name">
+                    <h1>Iris Wang</h1>
+                    <h3>Secretary</h3>
+                </div>
+                <div class="row">
+                    <p>Quisque pretium dolor non mi eleifend dictum. Aenean fringilla viverra elit pretium fringilla. Duis a dolor bibendum, luctus justo vel, rutrum nunc. Pellentesque ex massa, dictum at laoreet non, aliquam nec urna. Duis a dolor bibendum, luctus justo vel, rutrum nunc. </p>
+                </div>
+            </div>
+        </div>
+        <div class="row officer">
+            <div class="col-md-3">
+                <img class="img-responsive" src="img/officers/serra.jpg">
+            </div>
+            <div class="col-md-8">
+                <div class="row name">
+                    <h1>Serra Jung</h1>
+                    <h3>Historian</h3>
+                </div>
+                <div class="row">
+                    <p>Quisque pretium dolor non mi eleifend dictum. Aenean fringilla viverra elit pretium fringilla. Duis a dolor bibendum, luctus justo vel, rutrum nunc. Pellentesque ex massa, dictum at laoreet non, aliquam nec urna. Duis a dolor bibendum, luctus justo vel, rutrum nunc. </p>
+                </div>
+            </div>
+        </div>
+        <div class="row officer">
+            <div class="col-md-3">
+                <img class="img-responsive" src="img/officers/julia.jpg">
+            </div>
+            <div class="col-md-8">
+                <div class="row name">
+                    <h1>Julia Huang</h1>
+                    <h3>Reporter</h3>
+                </div>
+                <div class="row">
+                    <p>Quisque pretium dolor non mi eleifend dictum. Aenean fringilla viverra elit pretium fringilla. Duis a dolor bibendum, luctus justo vel, rutrum nunc. Pellentesque ex massa, dictum at laoreet non, aliquam nec urna. Duis a dolor bibendum, luctus justo vel, rutrum nunc. </p>
+                </div>
+            </div>
+        </div>
+        <div class="row officer">
+            <div class="col-md-3">
+                <img class="img-responsive" src="http://placehold.it/250x250">
+            </div>
+            <div class="col-md-8">
+                <div class="row name">
+                    <h1>Sabrina Chen</h1>
+                    <h3>Parliamentarian</h3>
+                </div>
+                <div class="row">
+                    <p>Quisque pretium dolor non mi eleifend dictum. Aenean fringilla viverra elit pretium fringilla. Duis a dolor bibendum, luctus justo vel, rutrum nunc. Pellentesque ex massa, dictum at laoreet non, aliquam nec urna. Duis a dolor bibendum, luctus justo vel, rutrum nunc. </p>
+                </div>
+            </div>
+        </div>
+        <div class="row officer">
+            <div class="col-md-3">
+                <img class="img-responsive" src="http://placehold.it/250x250">
+            </div>
+            <div class="col-md-8">
+                <div class="row name">
+                    <h1>Andrew Ye</h1>
+                    <h3>Parliamentarian</h3>
+                </div>
+                <div class="row">
+                    <p>Quisque pretium dolor non mi eleifend dictum. Aenean fringilla viverra elit pretium fringilla. Duis a dolor bibendum, luctus justo vel, rutrum nunc. Pellentesque ex massa, dictum at laoreet non, aliquam nec urna. Duis a dolor bibendum, luctus justo vel, rutrum nunc. </p>
+                </div>
+            </div>
+        </div>
+        <div class="row officer">
+            <div class="col-md-3">
+                <img class="img-responsive" src="img/officers/keshav.jpg">
+            </div>
+            <div class="col-md-8">
+                <div class="row name">
+                    <h1>Keshav Nand</h1>
+                    <h3>Chair of Community Service</h3>
+                </div>
+                <div class="row">
+                    <p>Quisque pretium dolor non mi eleifend dictum. Aenean fringilla viverra elit pretium fringilla. Duis a dolor bibendum, luctus justo vel, rutrum nunc. Pellentesque ex massa, dictum at laoreet non, aliquam nec urna. Duis a dolor bibendum, luctus justo vel, rutrum nunc. </p>
+                </div>
+            </div>
+        </div>
+        <div class="row officer">
+            <div class="col-md-3">
+                <img class="img-responsive" src="http://placehold.it/250x250">
+            </div>
+            <div class="col-md-8">
+                <div class="row name">
+                    <h1>Celine Shaw</h1>
+                    <h3>Chair of Partnership with Business</h3>
+                </div>
+                <div class="row">
+                    <p>My name is Celine Shaw, I’m an rising junior in FBLA, and have been involved with the club for one year. One of my goals as an officer is to encourage members of the club to be passionate about what they learn because I genuinely want them to succeed. I’m currently the Partnership with Business head with my partner Max Wang, and this year we will be in charge of the non chat project for 2016-17.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row officer">
+            <div class="col-md-3">
+                <img class="img-responsive" src="http://placehold.it/250x250">
+            </div>
+            <div class="col-md-8">
+                <div class="row name">
+                    <h1>Max Wang</h1>
+                    <h3>Chair of Partnership with Business</h3>
+                </div>
+                <div class="row">
+                    <p>Quisque pretium dolor non mi eleifend dictum. Aenean fringilla viverra elit pretium fringilla. Duis a dolor bibendum, luctus justo vel, rutrum nunc. Pellentesque ex massa, dictum at laoreet non, aliquam nec urna. Duis a dolor bibendum, luctus justo vel, rutrum nunc.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row officer">
+            <div class="col-md-3">
+                <img class="img-responsive" src="http://placehold.it/250x250">
+            </div>
+            <div class="col-md-8">
+                <div class="row name">
+                    <h1>Michael Lu</h1>
+                    <h3>Chair of American Enterprise</h3>
+                </div>
+                <div class="row">
+                    <p>Quisque pretium dolor non mi eleifend dictum. Aenean fringilla viverra elit pretium fringilla. Duis a dolor bibendum, luctus justo vel, rutrum nunc. Pellentesque ex massa, dictum at laoreet non, aliquam nec urna. Duis a dolor bibendum, luctus justo vel, rutrum nunc. </p>
+                </div>
+            </div>
+        </div>
+        <div class="row officer">
+            <div class="col-md-3">
+                <img class="img-responsive" src="http://placehold.it/250x250">
+            </div>
+            <div class="col-md-8">
+                <div class="row name">
+                    <h1>Alisen Chung</h1>
+                    <h3>Chair of American Enterprise</h3>
+                </div>
+                <div class="row">
+                    <p>Quisque pretium dolor non mi eleifend dictum. Aenean fringilla viverra elit pretium fringilla. Duis a dolor bibendum, luctus justo vel, rutrum nunc. Pellentesque ex massa, dictum at laoreet non, aliquam nec urna. Duis a dolor bibendum, luctus justo vel, rutrum nunc. </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br>
+
+    <!-- Past Officers -->
+    <div class="container" id="past-officers">
+        <h1>Past Officers</h1>
+        <h3>2015–2016 School Year</h3>
+        <ul>
+            <li>President – Randy Wu</li>
+            <li>President – Joseph Lai</li>
+            <li>Vice President – Joseph Ng</li>
+            <li>Vice President of Public Relations and Fundraising – Jason Huang</li>
+            <li>Secretary – Iris Wang</li>
+            <li>Historian – Serra Jung</li>
+            <li>Reporter – Julia Huang</li>
+            <li>Webmaster – Benjamin Owens</li>
+            <li>Chair of Partnership with Business – Bryan Owens</li>
+            <li>Chair of Community Service – Keshav Nand</li>
+            <li>Chair of Community Service – Michael Song</li>
+        </ul>
+        <h3>2014–2015 School Year</h3>
+        <ul>
+            <li>President – Randy Wu</li>
+            <li>President – Joseph Lai</li>
+            <li>Vice President – Conrad Chan</li>
+            <li>Vice President – Jason Huang</li>
+            <li>Treasurer – Asaf Katzir</li>
+            <li>Secretary – Zachary Englhardt</li>
+            <li>Historian – Samir Puranik</li>
+            <li>Parliamentarian – Asha Bacon</li>
+            <li>Parliamentarian – Matt Oh</li>
+            <li>Reporter – Jeff Lee</li>
+        </ul>
+    </div>
+
+
+
+    <!-- Footer -->
+    <%- include('partials/footer') %>
+
+    <div class="modal fade" id="contact" tabindex="-1" role="dialog" aria-labelledby="contactLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                    <h3 class="modal-title" id="contactLabel">Contact Gunn FBLA</h3>
+                </div>
+                <div class="modal-body">
+                    <p>If you have any questions or concerns about FBLA, please email <a href="mailto:fblagunn@gmail.com">fblagunn@gmail.com</a>, or call <a href="tel:16503917740">(650)-391-7740</a>.  We would love to answer your questions and talk to you.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="javascripts/bootstrap.min.js"></script>
+
+    <!-- Custom JavaScript -->
+    <script src="javascripts/main.js"></script>
+
+
+
+</body></html>

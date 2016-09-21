@@ -1,0 +1,26 @@
+{
+  "name": "FBLA",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "async": "^2.0.1",
+    "bcrypt-nodejs": "*",
+    "body-parser": "~1.0.0",
+    "connect-flash": "*",
+    "cookie-parser": "~1.0.1",
+    "cookie-session": "^2.0.0-alpha.1",
+    "debug": "~0.7.4",
+    "ejs": "^2.5.1",
+    "express": "~4.2.0",
+    "mongoose": "~3.8.12",
+    "morgan": "~1.0.0",
+    "nodemailer": "^2.5.0",
+    "passport": "~0.2.0",
+    "passport-local": "~1.0.0",
+    "serve-favicon": "^2.3.0",
+    "validator": "^5.6.0"
+  }
+}
