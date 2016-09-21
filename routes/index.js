@@ -13,41 +13,41 @@ module.exports = function(app, passport){
 
     /* GET home page. */
     app.get('/', function(req, res, next) {
-      res.render('home', { title: 'Gunn FBLA - Home' });
+      res.render('home', { title: 'Gunn Business - Home' });
     });
 	app.get('/news', function(req, res, next) {
-      res.render('news', { title: 'Gunn FBLA - News' });
+      res.render('news', { title: 'Gunn Business - News' });
     });
 	app.get('/projects', function(req, res, next) {
-      res.render('projects', { title: 'Gunn FBLA - Projects' });
+      res.render('projects', { title: 'Gunn Business - Projects' });
     });
 	app.get('/ae', function(req, res, next) {
-      res.render('ae', { title: 'Gunn FBLA - American Enterprise' });
+      res.render('ae', { title: 'Gunn Business - American Enterprise' });
     });
 	app.get('/pb', function(req, res, next) {
-      res.render('pb', { title: 'Gunn FBLA - Partnership with Business' });
+      res.render('pb', { title: 'Gunn Business - Partnership with Business' });
     });
 	app.get('/cs', function(req, res, next) {
-      res.render('cs', { title: 'Gunn FBLA - Community Service' });
+      res.render('cs', { title: 'Gunn Business - Community Service' });
     });
     /* GET About page. */
     app.get('/about', function(req, res, next) {
-      res.render('about', { title: 'Gunn FBLA - About' });
+      res.render('about', { title: 'Gunn Business - About' });
     });
     /* GET index page. */
     app.get('/index', function(req, res, next) {
-      res.render('home', { title: 'Gunn FBLA - Home' });
+      res.render('home', { title: 'Gunn Business - Home' });
     });
     /* GET events page. */
     app.get('/events', function(req, res, next) {
-      res.render('events', { title: 'Gunn FBLA - Events' });
+      res.render('events', { title: 'Gunn Business - Events' });
     });
 	/* GET New User page. */
 	app.get('/login', function(req, res) {
 		if(req.isAuthenticated(req, res)) {
             res.redirect('/profile');
         } else {
-			res.render('login', { title: 'Gunn FBLA - Login', message: req.flash('message')});
+			res.render('login', { title: 'Gunn Business - Login', message: req.flash('message')});
 		}
 	});
 	app.post('/login', passport.authenticate('login', {
@@ -60,7 +60,7 @@ module.exports = function(app, passport){
 		if(req.isAuthenticated(req, res)) {
             res.redirect('/profile');
         } else {
-			res.render('registration', { title: 'Gunn FBLA - User Registration', message: req.flash('message')});
+			res.render('registration', { title: 'Gunn Business - User Registration', message: req.flash('message')});
 		}
 	});
     /* Handle Registration POST */
@@ -79,7 +79,7 @@ module.exports = function(app, passport){
         } else {
 			res.render('forgot', {
 				user: req.user,
-				title: 'Gunn FBLA - Forgot Password',
+				title: 'Gunn Business - Forgot Password',
 				message: req.flash('message')
 			});
 		}
@@ -142,7 +142,7 @@ module.exports = function(app, passport){
 			}
 			res.render('reset', {
 				user: req.user,
-				title: 'Gunn FBLA - Reset Password'
+				title: 'Gunn Business - Reset Password'
 			});
 		});
 	});
@@ -172,25 +172,19 @@ module.exports = function(app, passport){
 	});
 	/* GET Profile Page */
 	app.get('/profile', isAuthenticated, function(req, res){
-		res.render('profile', { title: 'Gunn FBLA - Profile', user: req.user, message: req.flash('message')});
+		res.render('profile', { title: 'Gunn Business - Profile', user: req.user, message: req.flash('message')});
 	});
 	app.post('/profile', function(req, res) {
 		async.waterfall([
 			function(done) {
-				User.findOne({ email: req.user.email }, function(err, user) {
-  		        if (!user) {
-  		          req.flash('error', 'An unexpected error occurred.');
-  		          return res.redirect('/forgot');
-  		        }
 				if (!bCrypt.compareSync(req.body.password, req.user.password)){
 					req.flash('message', 'Incorrect Password');
 					return res.redirect('/profile');
 				}
-				user.phoneNumber = req.body.phoneNumber;
-  		        user.save(function(err) {
-					done(err, user);
-	  		        });
-				});
+				req.user.phoneNumber = req.body.phoneNumber;
+  		        req.user.save(function(err) {
+					done(err, req.user);
+  		        });
 			}
 		], function(err) {
 		res.redirect('/profile');
