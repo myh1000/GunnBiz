@@ -1,5 +1,5 @@
-# FBLA
-server for FBLA
+# Gunn Business Website
+website and server for Gunn Business Club
 
 ## setup
 ```
@@ -7,9 +7,9 @@ npm install
 ```
 
 ## running
-run server with ```npm start``` or ```node app.js```
+run database first with ```mongod --dbpath=data```
 
-run database with ```mongod --dbpath=data```
+run server with ```npm start``` or ```node app.js```
 
 serves on port 3000
 
