@@ -170,9 +170,31 @@ module.exports = function(app, passport){
 		res.redirect('/');
 		});
 	});
-	/* GET Home Page */
+	/* GET Profile Page */
 	app.get('/profile', isAuthenticated, function(req, res){
-		res.render('profile', { title: 'Gunn FBLA - Profile', user: req.user });
+		res.render('profile', { title: 'Gunn FBLA - Profile', user: req.user, message: req.flash('message')});
+	});
+	app.post('/profile', function(req, res) {
+		async.waterfall([
+			function(done) {
+				User.findOne({ email: req.user.email }, function(err, user) {
+  		        if (!user) {
+  		          req.flash('error', 'An unexpected error occurred.');
+  		          return res.redirect('/forgot');
+  		        }
+				if (!bCrypt.compareSync(req.body.password, req.user.password)){
+					req.flash('message', 'Incorrect Password');
+					return res.redirect('/profile');
+				}
+				user.phoneNumber = req.body.phoneNumber;
+  		        user.save(function(err) {
+					done(err, user);
+	  		        });
+				});
+			}
+		], function(err) {
+		res.redirect('/profile');
+		});
 	});
 
     // return app;

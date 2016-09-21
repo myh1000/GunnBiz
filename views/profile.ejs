@@ -100,6 +100,28 @@
                 <li>Year: <%= user.year %></li>
                 <li>Student ID: <%= user.studentID %></li>
             </div>
+            <div class="col-md-12">
+                <form id="form-signin" method="POST" action="/profile">
+                    <!-- <div class="form-group">
+                        <label for="email">Email address</label>
+                        <input type="email" class="form-control" name="email" required>
+                    </div> -->
+                    <div class="form-group">
+                        <label for="phoneNumber">Phone Number</label>
+                        <input type="number" pattern="[0-9]*" class="form-control" name="phoneNumber" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="pwd">Password</label>
+                        <input type="password" class='form-control nomargin' name="password" required>
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
+                    <div>
+                        <% if (message.length > 0) { %>
+                    		<p id="message"><%= message %></p>
+                        <% } %>
+                    </div>
+                </form>
+            </div>
 
 
         </div>
