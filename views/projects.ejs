@@ -71,19 +71,19 @@
                                 <a href="cs">Community Service</a>
                             </li>
                             </li>
-                            <% if (login) { %>
-                                <li>
-                                    <a class="nav-bold" href="profile">Profile</a>
-                                </li>
-                            <% } %>
-                            <li>
-                                <% if (login) { %>
-                                    <a href="logout">Logout</a>
-                                <% }else{ %>
-                                    <a href="login">Login</a>
-                                <% } %>
-                            </li>
                         </ul>
+                    </li>
+                    <% if (login) { %>
+                        <li>
+                            <a class="nav-bold" href="profile">Profile</a>
+                        </li>
+                    <% } %>
+                    <li>
+                        <% if (login) { %>
+                            <a href="logout">Logout</a>
+                        <% }else{ %>
+                            <a href="login">Login</a>
+                        <% } %>
                     </li>
                     <li>
                         <a href="login">Login</a>
