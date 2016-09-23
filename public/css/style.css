@@ -324,26 +324,29 @@ input[type=number]::-webkit-outer-spin-button {
 #lead-section h1 {
   margin: 0;
 }
-.blue-three {
-  margin: 64px 0 72px 0;
-  background-color: #314581;
+.blue-threes {
+  margin: 64px 0px;
+  border-top: 1px solid #e5e5e5;
 }
-.blue-three div {
+.blue-threes div {
   color: #fff;
-  padding: 64px 62px;
 }
-.blue-three div h3 {
-  color: inherit;
-  margin: 0 0 32px 0;
+.blue-threes div h3 {
+  color: black;
+  margin: 30px 32px 30px;
 }
-.blue-three div:nth-child(1) {
-  background-color: #4c4c4c;
+.blue-threes div p {
+  color: black;
+  margin: 20px 40px 32px 30px;
 }
-.blue-three div:nth-child(2) {
-  background-color: #323232;
+.blue-threes div:nth-child(1) {
+  /*background-color: #4c4c4c;*/
 }
-.blue-three div:nth-child(3) {
-  background-color: #191919;
+.blue-threes div:nth-child(2) {
+  /*background-color: #323232;*/
+}
+.blue-threes div:nth-child(3) {
+  /*background-color: #191919;*/
 }
 .announcement {
   text-align: center;
