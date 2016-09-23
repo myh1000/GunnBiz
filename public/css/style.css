@@ -15,8 +15,8 @@ body {
     background-color: #f8f8f8;
     color: #545454;
 }
-header div {
-
+div.navbar-head {
+    margin-left: -35px;
 }
 header h1 {
     font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -150,9 +150,8 @@ nav.navbar-noscroll {
     min-height: 81px;
     z-index: 1030;
 }
-nav.navbar-noscroll .navbar-toggle {
-  margin: 0;
-  padding: 30px;
+button.navbar-toggle {
+  margin-top: 22px;
 }
 nav.navbar-noscroll a.navbar-brand {
   padding: 30px 0;
@@ -189,10 +188,12 @@ nav.navbar-noscroll .dropdown-menu {
 }
 nav.navbar-scroll {
     font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    box-shadow: 0 3px 15px -4px rgba(0,0,0,0.15);
 }
 nav.navbar-scroll a.navbar-brand {
-  padding: 15px 0;
+  padding: 30px 0;
   font-size: 24px;
+  min-height: 81px;
   font-weight: bold;
   text-transform: uppercase;
   color: #8e0000;
@@ -202,15 +203,15 @@ nav.navbar-scroll a.navbar-brand:hover {
   color: #8e0000;
 }
 nav.navbar-scroll ul.nav li a {
-  padding: 15px 19px;
+  padding: 30px 19px;
   font-size: 13px;
   text-transform: uppercase;
 }
 nav.navbar-scroll ul.nav li:first-of-type a {
-  padding: 15px 19px 15px 0;
+  padding: 30px 19px 15px 0;
 }
 nav.navbar-scroll ul.nav li:last-of-type a {
-  padding: 15px 0 15px 19px;
+  padding: 30px 0 15px 19px;
 }
 nav.navbar-scroll ul.nav li a.nav-bold {
     color: #8e0000;
@@ -241,12 +242,13 @@ header.carousel .fill {
 }
 
 .carousel-caption {
-    position: absolute;
-    right: 15%;
-    left: 15%;
+    /*position: absolute;*/
+    /*right: 15%;*/
+    /*left: 15%;*/
     z-index: 10;
     padding-top: 20px;
     padding-bottom: 20px;
+    margin: 10px;
     transform: translateX(20%);
     color: #fff;
     text-align: right;
