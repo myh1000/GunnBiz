@@ -1,9 +1,14 @@
-```
+<pre>
 show dbs/collections
 
-use data
+use <i>db_name</i>
 
-db.usercollection.find()
+db.<i>collection name</i>.find()
 
-db.usercollection.remove( {"username":"testuser"})
+db.<i>collection name</i>.remove( {"username":"testuser"})
+</pre>
+```
+use gunnbiz
+db.users.find()
+db.users.remove({"id":########})
 ```
