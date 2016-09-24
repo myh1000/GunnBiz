@@ -9,6 +9,7 @@
     "async": "^2.0.1",
     "bcrypt-nodejs": "*",
     "body-parser": "~1.0.0",
+    "bson": "~0.5.5",
     "connect-flash": "*",
     "cookie-parser": "~1.0.1",
     "cookie-session": "^2.0.0-alpha.1",
