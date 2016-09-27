@@ -16,4 +16,4 @@ serves on port 3000
 ### TODO:
 
 - make it look good
-- update to Gunn Biz
+- update to Gunn Business
