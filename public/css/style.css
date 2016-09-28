@@ -241,13 +241,13 @@ header.carousel .fill {
 }
 
 .carousel-caption {
-    /*position: absolute;*/
-    /*right: 15%;*/
-    /*left: 15%;*/
+    position: absolute;
+    right: 15%;
+    left: 15%;
     z-index: 10;
     padding-top: 20px;
     padding-bottom: 20px;
-    margin: 10px;
+    /*margin: 10px;*/
     transform: translateX(20%);
     color: #fff;
     text-align: right;
@@ -286,14 +286,6 @@ header.carousel .fill {
 }
 .carousel-fade .carousel-control {
     z-index: 2;
-}
-
-@media screen and (min-width: 768px) {
-    .carousel-caption {
-        right: 20%;
-        left: 20%;
-        padding-bottom: 30px;
-    }
 }
 
 @media(max-width:767px) {
@@ -426,6 +418,15 @@ div.center {
     .blue-threes div p {
       color: black;
       margin: 20px 0px 32px 0px;
+    }
+    .carousel-caption h2{
+        font-size: 250%;
+        line-height: 20px;
+    }
+    .carousel-caption .bold{
+        font-size: 230%;
+        line-height: 35px;
+        word-wrap: break-word;
     }
 }
 @media (min-width: 1200px) {
