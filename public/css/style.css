@@ -471,6 +471,11 @@ ul.footer-links li a {
 ul.footer-links li:first-of-type a {
     padding: 50px 19px 50px 0;/*FIX 52*/
 }
+ul.pull-right li:first-of-type a {
+    margin-left: 80px;
+    margin-right: 40px;
+    padding: 50px 19px 50px 0;/*FIX 52*/
+}
 ul.footer-links li:last-of-type a {
     padding: 50px 0 50px 19px;/*FIX 52?*/
 }
