@@ -356,6 +356,10 @@ input[type=number]::-webkit-outer-spin-button {
 div.center {
     text-align: center;
 }
+.row {
+    margin-left: 0;
+    margin-right: 0;
+}
 .row.update {
     padding: 25px 0 25px 0;
 }
