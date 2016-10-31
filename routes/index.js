@@ -177,6 +177,7 @@ module.exports = function(app, passport){
 	app.post('/setinfo', function(req, res) {
 		req.user.firstName = req.body.firstName;
 		req.user.lastName = req.body.lastName;
+		req.user.phoneNumber = req.body.phoneNumber;
 		req.user.grade = req.body.grade;
 		req.user.birthday = req.body.birthday;
 		req.user.studentID = req.body.studentID;

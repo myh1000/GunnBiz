@@ -82,7 +82,7 @@
         <!-- /.container -->
     </nav>
     <div class="container">
-        <div class="row heading">
+        <div style="padding: 50px 0 25px 0;" class="row heading">
     		<h1>Registration</h1>
     	</div>
         <div class="col-md-12">
@@ -117,14 +117,18 @@
                     </select>
                 </div>
                 <div class="form-group">
+                    <label for="pwd">Birthday</label>
+                    <input type="date" class="form-control" name="birthday">
+                </div>
+                <div class="form-group">
                     <label for="pwd">Student ID</label>
                     <input type="number" pattern="[0-9]*" name="studentID" class="form-control" required>
                 </div>
                 <!-- <div class="checkbox">
                     <label><input type="checkbox"> Remember me</label>
                 </div> -->
+                <div style="padding: 10px 0 0 0;">
                 <button type="submit" class="btn btn-default">Submit</button>
-                <div>
                     <% if (message.length > 0) { %>
                 		<p id="message"><%= message %></p>
                     <% } %>

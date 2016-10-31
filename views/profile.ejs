@@ -415,7 +415,9 @@
 									            <% }
 									        %>
 									    </select>
-									    <label>Birthday</label>
+										<label for="phoneNumber">Phone Number</label>
+										<input type="tel" class="form-control" name="phoneNumber" value="<%= user.phoneNumber %>">
+										<label>Birthday</label>
 									    <input type="date" class="form-control" name="birthday" value="<%= user.birthday %>">
 									    <label>Student ID</label>
 									    <input type="text" class="form-control" name="studentID" value="<%= user.studentID %>">
