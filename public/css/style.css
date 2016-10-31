@@ -86,7 +86,10 @@ a:active {
   border-radius: 1px;
 }
 .btn.btn-wide {
-  padding: 20px 55px;
+  border-color: #ccc;
+  font-size: 15px;
+  background-color: #fff;
+  padding: 17px 27px;
 }
 .btn.btn-white {
   background-color: #fff;

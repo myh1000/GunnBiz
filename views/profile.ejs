@@ -156,7 +156,7 @@
 						<%
 					}
 					%>
-                    <a href="#" class="btn btn-default">Learn More</a>
+					<button type="submit" class="btn btn-wide">Submit</button>
                 </div>
             </div>
         </div>
@@ -214,33 +214,10 @@
 					    <%
 					}
 					%>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?</p>
-                    <a href="#" class="btn btn-default">Learn More</a>
+					<button type="submit" class="btn btn-wide">Submit</button>
                 </div>
             </div>
         </div>
-		<div class="col-md-12" id="lead-container">
-			<form id="form-signin" method="POST" action="/meme">
-				<div class="form-group">
-					<label for="email">Email address</label>
-					<input type="email" class="form-control" name="email" required>
-				</div>
-				<div class="form-group">
-					<label for="phoneNumber">Phone Number</label>
-					<input type="number" pattern="[0-9]*" class="form-control" name="phoneNumber" required>
-				</div>
-				<div class="form-group">
-					<label for="pwd">Password</label>
-					<input type="password" class='form-control nomargin' name="password" required>
-				</div>
-				<button type="submit" class="btn btn-default">Submit</button>
-				<div>
-					<% if (message.length > 0) { %>
-						<p id="message"><%= message %></p>
-					<% } %>
-				</div>
-			</form>
-		</div>
 	</div>
 
 	<!-- Footer -->
