@@ -93,97 +93,132 @@
 
 	<div class="container">
 		<div style="padding: 50px 0 20px 0">
-			<h1>Welcome, <%= user.firstName %> <%= user.lastName %> </h1>
+			<h1 style="font-size: 35px;">Welcome, <%= user.firstName %> <%= user.lastName %> </h1>
 		</div>
 	</div>
 	<div class="container">
 		<div class="row">
-			<% if (user.DECA_registrationPayment == null){ %>
-				<p style="color:red;"><b>DECA Registration Payment: Unsubmitted</b></p>
-				<%
-			}	else{
-				%>
-				<p style="color:green"><b>FBLA Registration Payment: Submitted</b></p>
-				<%
-			}
-			%>
-			<% if (user.FBLA_registrationPayment == null){ %>
-				<p style="color:red;"><b>FBLA Registration Payment: Unsubmitted</b></p>
-				<%
-			}	else{
-				%>
-				<p style="color:green"><b>FBLA Registration Payment: Submitted</b></p>
-				<%
-			}
-			%>
-			<% if (user.DECA_statesRegistered == null){
-				%>
-				<p style="color:red;"><b>DECA States Registration: Unsubmitted</b></p>
-				<%
-			}	else{
-				%>
-				<p style="color:green"><b>DECA States Registration: Submitted</b></p>
-				<%
-			}
-			%>
-			<% if (user.FBLA_statesRegistered == null){
-				%>
-				<p style="color:red;"><b>FBLA States Registration: Unsubmitted</b></p>
-				<%
-			}	else{
-				%>
-				<p style="color:green"><b>FBLA States Registration: Submitted</b></p>
-				<%
-			}
-			%>
-
-			<% if (user.DECA_statesChecks == null){
-				%>
-						 <p style="color:red;"><b>DECA States Checks: Unsubmitted</b></p>
-				<%
-			}	else{
-				%>
-				<p style="color:green"><b>DECA States Checks: Submitted</b></p>
-				<%
-			}
-			%>
-
-			<% if (user.FBLA_statesChecks == null){
-				%>
-				<p style="color:red;"><b>FBLA States Checks: Unsubmitted</b></p>
-				<%
-			}	else{
-				%>
-				<p style="color:green"><b>FBLA States Checks: Submitted</b></p>
-				<%
-			}
-			%>
-
-			<% if (user.DECA_statesForms == null){
-				%>
-				<p style="color:red;"><b>DECA States Forms: Unsubmitted</b></p>
-				<%
-			}	else{
-				%>
-				<p style="color:green"><b>DECA States Forms: Submitted</b></p>
-				<%
-			}
-			%>
-
-			<% if (user.FBLA_statesForms == null){
-				%>
-				<p style="color:red;"><b>FBLA States Forms: Unsubmitted</b></p>
-				<%
-			}	else{
-				%>
-				<p style="color:green"><b>FBLA States Forms: Submitted</b></p>
-				<%
-			}
-			%>
-			<li>Email: <%= user.email %></li>
+			<!-- <li>Email: <%= user.email %></li>
 			<li>Year: <%= user.year %></li>
-			<li>Student ID: <%= user.studentID %></li>
+			<li>Student ID: <%= user.studentID %></li> -->
 		</div>
+		<div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+					<% if (user.FBLA_statesChecks == null || user.FBLA_statesForms == null || user.FBLA_registrationPayment == null || user.FBLA_statesRegistered == null){
+						%>
+						<h4 style="font-size: 20px; color:red"><i class="fa fa-times"></i> FBLA Signups</h4>
+						<%
+					}	else{
+						%>
+						<h4 style="font-size: 20px; color:green"><i class="fa fa-check"></i> FBLA Signups</h4>
+						<%
+					}
+					%>
+                </div>
+                <div class="panel-body">
+					<% if (user.FBLA_registrationPayment == null){ %>
+						<p style="color:red;"><b>FBLA Registration Payment: Unsubmitted</b></p>
+						<%
+					}	else{
+						%>
+						<p style="color:green"><b>FBLA Registration Payment: Submitted</b></p>
+						<%
+					}
+					%>
+					<% if (user.FBLA_statesRegistered == null){
+						%>
+						<p style="color:red;"><b>FBLA States Registration: Unsubmitted</b></p>
+						<%
+					}	else{
+						%>
+						<p style="color:green"><b>FBLA States Registration: Submitted</b></p>
+						<%
+					}
+					%>
+					<% if (user.FBLA_statesChecks == null){
+						%>
+						<p style="color:red;"><b>FBLA States Checks: Unsubmitted</b></p>
+						<%
+					}	else{
+						%>
+						<p style="color:green"><b>FBLA States Checks: Submitted</b></p>
+						<%
+					}
+					%>
+					<% if (user.FBLA_statesForms == null){
+						%>
+						<p style="color:red;"><b>FBLA States Forms: Unsubmitted</b></p>
+						<%
+					}	else{
+						%>
+						<p style="color:green"><b>FBLA States Forms: Submitted</b></p>
+						<%
+					}
+					%>
+                    <a href="#" class="btn btn-default">Learn More</a>
+                </div>
+            </div>
+        </div>
+		<div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+					<% if (user.DECA_statesChecks == null || user.DECA_statesForms == null || user.DECA_registrationPayment == null || user.DECA_statesRegistered == null){
+						%>
+						<h4 style="font-size: 20px; color:red"><i class="fa fa-times"></i> DECA Signups</h4>
+						<%
+					}	else{
+						%>
+						<h4 style="font-size: 20px; color:green"><i class="fa fa-check"></i> DECA Signups</h4>
+						<%
+					}
+					%>
+                </div>
+                <div class="panel-body">
+					<% if (user.DECA_registrationPayment == null){ %>
+					    <p style="color:red;"><b>DECA Registration Payment: Unsubmitted</b></p>
+					    <%
+					}	else{
+					    %>
+					    <p style="color:green"><b>DECA Registration Payment: Submitted</b></p>
+					    <%
+					}
+					%>
+					<% if (user.DECA_statesRegistered == null){
+					    %>
+					    <p style="color:red;"><b>DECA States Registration: Unsubmitted</b></p>
+					    <%
+					}	else{
+					    %>
+					    <p style="color:green"><b>DECA States Registration: Submitted</b></p>
+					    <%
+					}
+					%>
+					<% if (user.DECA_statesChecks == null){
+					    %>
+					    <p style="color:red;"><b>DECA States Checks: Unsubmitted</b></p>
+					    <%
+					}	else{
+					    %>
+					    <p style="color:green"><b>DECA States Checks: Submitted</b></p>
+					    <%
+					}
+					%>
+					<% if (user.DECA_statesForms == null){
+					    %>
+					    <p style="color:red;"><b>DECA States Forms: Unsubmitted</b></p>
+					    <%
+					}	else{
+					    %>
+					    <p style="color:green"><b>DECA States Forms: Submitted</b></p>
+					    <%
+					}
+					%>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?</p>
+                    <a href="#" class="btn btn-default">Learn More</a>
+                </div>
+            </div>
+        </div>
 		<div class="col-md-12" id="lead-container">
 			<form id="form-signin" method="POST" action="/meme">
 				<div class="form-group">

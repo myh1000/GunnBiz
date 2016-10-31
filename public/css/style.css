@@ -74,25 +74,25 @@ a:active {
 .container.full-width {
     width: 95%;
 }
-a.btn {
+.btn {
   font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: bold;
   font-size: 13px;
   line-height: 13px;
   text-transform: uppercase;
-  min-height: 55px;
-  padding: 20px 28px;
+  min-height: 42px;
+  padding: 6px 20px;
   color: #008e8e;
   border-radius: 1px;
 }
-a.btn.btn-wide {
+.btn.btn-wide {
   padding: 20px 55px;
 }
-a.btn.btn-white {
+.btn.btn-white {
   background-color: #fff;
   border: none;
 }
-a.btn.btn-outline {
+.btn.btn-outline {
   background-color: transparent;
   border: 2px solid #008e8e;
 }
