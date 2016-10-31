@@ -10,5 +10,5 @@ db.<i>collection name</i>.remove( {"username":"testuser"})
 ```
 use gunnbiz
 db.users.find()
-db.users.remove({"id":########})
+db.users.remove({"studentID":########})
 ```

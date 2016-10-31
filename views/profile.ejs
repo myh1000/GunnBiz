@@ -114,7 +114,7 @@
 					<div class="col-md-12">
 			            <div class="panel panel-default">
 			                <div class="panel-heading">
-								<% if (user.DECA_statesChecks == null || user.DECA_statesForms == null || user.DECA_registrationPayment == null || user.DECA_statesRegistered == null){
+								<% if (user.DECA_regionalsChecks == null || user.DECA_regionalsForms == null || user.DECA_registrationPayment == null || user.DECA_regionalsRegistered == null){
 									%>
 									<h4 style="font-size: 20px; color:red"><i class="fa fa-times"></i> DECA Signups</h4>
 									<%
@@ -135,40 +135,40 @@
 								    <%
 								}
 								%>
-								<% if (user.DECA_statesRegistered == null){
+								<% if (user.DECA_regionalsRegistered == null){
 								    %>
-								    <p style="color:red;"><b>DECA States Registration: Unsubmitted</b></p>
+								    <p style="color:red;"><b>DECA Regionals Registration: Unsubmitted</b></p>
 								    <%
 								}	else{
 								    %>
-								    <p style="color:green"><b>DECA States Registration: Submitted</b></p>
+								    <p style="color:green"><b>DECA Regionals Registration: Submitted</b></p>
 								    <%
 								}
 								%>
-								<% if (user.DECA_statesChecks == null){
+								<% if (user.DECA_regionalsChecks == null){
 								    %>
-								    <p style="color:red;"><b>DECA States Checks: Unsubmitted</b></p>
+								    <p style="color:red;"><b>DECA Regionals Checks: Unsubmitted</b></p>
 								    <%
 								}	else{
 								    %>
-								    <p style="color:green"><b>DECA States Checks: Submitted</b></p>
+								    <p style="color:green"><b>DECA Regionals Checks: Submitted</b></p>
 								    <%
 								}
 								%>
-								<% if (user.DECA_statesForms == null){
+								<% if (user.DECA_regionalsForms == null){
 								    %>
-								    <p style="color:red;"><b>DECA States Forms: Unsubmitted</b></p>
+								    <p style="color:red;"><b>DECA Regionals Forms: Unsubmitted</b></p>
 								    <%
 								}	else{
 								    %>
-								    <p style="color:green"><b>DECA States Forms: Submitted</b></p>
+								    <p style="color:green"><b>DECA Regionals Forms: Submitted</b></p>
 								    <%
 								}
 								%>
-								<form action="/setRegionals" method="post">
+								<form action="/setDECARegionals" method="post">
 								<div class="form-group">
 								    <label>Roleplay</label>
-								        <select name="regionalsRoleplay" class="form-control" id="grade" selected=<%= user.DECA_regionalsRoleplay %>>
+								        <select name="DECA_regionalsRoleplay" class="form-control" id="grade" selected=<%= user.DECA_regionalsRoleplay %>>
 								            <%
 								                var options = [
 								                    "NONE SELECTED",
@@ -204,9 +204,9 @@
 								        </select>
 
 								        <label>Roleplay Partner</label>
-								        <input type="text" class="form-control" name="roleplayPartner" value="<%= user.DECA_roleplayPartner %>">
+								        <input type="text" class="form-control" name="DECA_roleplayPartner" value="<%= user.DECA_roleplayPartner %>">
 								        <label>Written</label>
-								        <select name="regionalsWritten" class="form-control" id="grade" selected=<%= user.DECA_regionalsWritten %>>
+								        <select name="DECA_regionalsWritten" class="form-control" id="grade" selected=<%= user.DECA_regionalsWritten %>>
 								            <%
 								                var options = [
 								                    "NONE SELECTED",
@@ -235,14 +235,13 @@
 								        </select>
 
 								            <label>Written Partner 1</label>
-								            <input type="text" class="form-control" name="writtenPartner1"  value="<%= user.DECA_writtenPartner1 %>" >
+								            <input type="text" class="form-control" name="DECA_writtenPartner1"  value="<%= user.DECA_writtenPartner1 %>" >
 								            <label>Written Partner 2</label>
-								            <input type="text" class="form-control" name="writtenPartner2"  value="<%= user.DECA_writtenPartner2 %>" >
+								            <input type="text" class="form-control" name="DECA_writtenPartner2"  value="<%= user.DECA_writtenPartner2 %>" >
 								    </div>
 
-								    <% if(user.DECA_statesRegistered == 1){%>
-								        <button type="submit" class="btn-submit btn btn-warning btn-lg" name="submitbutton" value="save">Update</button>
-								        <button type="submit" class="btn-submit btn btn-warning btn-lg" name="submitbutton" value="cancel">Cancel</button>
+								    <% if(user.DECA_regionalsRegistered == 1){%>
+										<button type="submit" class="btn btn-wide">Update</button>
 								        <%} else { %>
 								        <!-- <button type="submit" class="btn-submit btn btn-warning btn-lg" name="submitbutton" value="save">Register</button> -->
 										<button type="submit" class="btn btn-wide">Submit</button>
@@ -256,7 +255,7 @@
 					<div class="col-md-12">
 						<div class="panel panel-default">
 							<div class="panel-heading">
-								<% if (user.FBLA_statesChecks == null || user.FBLA_statesForms == null || user.FBLA_registrationPayment == null || user.FBLA_statesRegistered == null){
+								<% if (user.FBLA_regionalsChecks == null || user.FBLA_regionalsForms == null || user.FBLA_registrationPayment == null || user.FBLA_regionalsRegistered == null){
 									%>
 									<h4 style="font-size: 20px; color:red"><i class="fa fa-times"></i> FBLA Signups</h4>
 									<%
@@ -277,37 +276,118 @@
 									<%
 								}
 								%>
-								<% if (user.FBLA_statesRegistered == null){
+								<% if (user.FBLA_regionalsRegistered == null){
 									%>
-									<p style="color:red;"><b>FBLA States Registration: Unsubmitted</b></p>
+									<p style="color:red;"><b>FBLA Regionals Registration: Unsubmitted</b></p>
 									<%
 								}	else{
 									%>
-									<p style="color:green"><b>FBLA States Registration: Submitted</b></p>
+									<p style="color:green"><b>FBLA Regionals Registration: Submitted</b></p>
 									<%
 								}
 								%>
-								<% if (user.FBLA_statesChecks == null){
+								<% if (user.FBLA_regionalsChecks == null){
 									%>
-									<p style="color:red;"><b>FBLA States Checks: Unsubmitted</b></p>
+									<p style="color:red;"><b>FBLA Regionals Checks: Unsubmitted</b></p>
 									<%
 								}	else{
 									%>
-									<p style="color:green"><b>FBLA States Checks: Submitted</b></p>
+									<p style="color:green"><b>FBLA Regionals Checks: Submitted</b></p>
 									<%
 								}
 								%>
-								<% if (user.FBLA_statesForms == null){
+								<% if (user.FBLA_regionalsForms == null){
 									%>
-									<p style="color:red;"><b>FBLA States Forms: Unsubmitted</b></p>
+									<p style="color:red;"><b>FBLA Regionals Forms: Unsubmitted</b></p>
 									<%
 								}	else{
 									%>
-									<p style="color:green"><b>FBLA States Forms: Submitted</b></p>
+									<p style="color:green"><b>FBLA Regionals Forms: Submitted</b></p>
 									<%
 								}
 								%>
-								<button type="submit" class="btn btn-wide">Submit</button>
+								<form action="/setFBLARegionals" method="post">
+								<div class="form-group">
+								    <label>Roleplay</label>
+								        <select name="FBLA_regionalsRoleplay" class="form-control" id="grade" selected=<%= user.FBLA_regionalsRoleplay %>>
+								            <%
+								                var options = [
+								                    "NONE SELECTED",
+								                    "PBM Principles of Business Management and Administration",
+								                    "PFN Principles of Finance",
+								                    "PHT Principles of Hospitality and Tourism",
+								                    "PMK Principles of Marketing",
+								                    "BLTDM Business Law and Ethics Team Decision Making",
+								                    "BTDM Buying and Merchandising Team Decision Making",
+								                    "FTDM Financial Services Team Decision Making",
+								                    "HTDM Hospitality Services Team Decision Making",
+								                    "MTDM Marketing Communications Team Decision Making",
+								                    "STDM Sports and Entertainment Marketing Team Decision Making",
+								                    "TTDM Travel and Tourism Marketing Team Decision Making",
+								                    "ACT Accounting Applications",
+								                    "AAM Apparel and Accessories Marketing Series",
+								                    "ASM Automotive Services Marketing Series",
+								                    "BFS Business Finance Series",
+								                    "BSM Business Services Marketing Series",
+								                    "FMS Food Marketing Series",
+								                    "HLM Hotel and Lodging Management Series",
+								                    "HRM Human Resource Management Series",
+								                    "MMS Marketing Management Series",
+								                    "QSRM Quick Serve Restaurant Management Series",
+								                    "RFSM Restaurant and Food Service Management",
+								                    "RMS Retail Merchandising Series",
+								                    "SEM Sports and Entertainment Marketing Series",
+								                    "PFL Personal Financial Literacy"
+								                ]
+								                for(var i = 0; i < options.length; i++) { %>
+								                    <option <% if (user.FBLA_regionalsRoleplay == options[i]) { %>selected<% } %> >  <%= options[i] %>  </option>
+								                <% } %>
+								        </select>
+
+								        <label>Roleplay Partner</label>
+								        <input type="text" class="form-control" name="FBLA_roleplayPartner" value="<%= user.FBLA_roleplayPartner %>">
+								        <label>Written</label>
+								        <select name="FBLA_regionalsWritten" class="form-control" id="grade" selected=<%= user.FBLA_regionalsWritten %>>
+								            <%
+								                var options = [
+								                    "NONE SELECTED",
+								                    "BOR Business Services Operations Research",
+								                    "BMOR Buying and Merchandising Operations Research",
+								                    "FOR Finance Operations",
+								                    "HTOR Hospitality and Tourism Operations Research",
+								                    "SEOR Sports and Entertainment Marketing Operations Research",
+								                    "EIP Innovation Plan",
+								                    "EIB Independent Business Plan",
+								                    "ESB Start-Up Business Plan",
+								                    "EBG Business Growth Plan",
+								                    "IBP International Business Plan",
+								                    "ADC Advertising Campaign Event",
+								                    "FMP Fashion Merchandising Promotion Plan",
+								                    "SEPP Sports and Entertainment Promotion Plan",
+								                    "FCE Financial Consulting Event",
+								                    "HTPS Hospitality and Tourism Professional Selling",
+								                    "PSE Professional Selling"
+
+								                ]
+								                for(var i = 0; i < options.length; i++) { %>
+								                    <option <% if (user.FBLA_regionalsWritten == options[i]) { %>selected<% } %> >  <%= options[i] %>  </option>
+								                <% }
+								            %>
+								        </select>
+
+								            <label>Written Partner 1</label>
+								            <input type="text" class="form-control" name="FBLA_writtenPartner1"  value="<%= user.FBLA_writtenPartner1 %>" >
+								            <label>Written Partner 2</label>
+								            <input type="text" class="form-control" name="FBLA_writtenPartner2"  value="<%= user.FBLA_writtenPartner2 %>" >
+								    </div>
+
+								    <% if(user.FBLA_regionalsRegistered == 1){%>
+								        <button type="submit" class="btn btn-wide">Update</button>
+								        <%} else { %>
+								        <!-- <button type="submit" class="btn-submit btn btn-warning btn-lg" name="submitbutton" value="save">Register</button> -->
+								        <button type="submit" class="btn btn-wide">Submit</button>
+								        <%}%>
+								</form>
 							</div>
 						</div>
 					</div>
@@ -323,15 +403,15 @@
 									<div class="form-group">
 
 									    <label>First Name</label>
-									    <input type="text" class="form-control" name="firstname" value="<%= user.firstname %>">
+									    <input type="text" class="form-control" name="firstName" value="<%= user.firstName %>">
 									    <label>Last Name</label>
-									    <input type="text" class="form-control" name="lastname" value="<%= user.lastname %>">
+									    <input type="text" class="form-control" name="lastName" value="<%= user.lastName %>">
 									    <label>Grade</label>
 									    <select name="grade" class="form-control" id="grade" selected=<%= user.year %>>
 									        <%
-									            var options = [9,10,11,12]
+									            var options = ["Freshman", "Sophomore", "Junior", "Senior"]
 									            for(var i = 0; i < options.length; i++) { %>
-									                <option <% if (user.grade == options[i]) { %>selected<% } %> >  <%= options[i] %>  </option>
+									                <option <% if (user.year == options[i]) { %>selected<% } %> >  <%= options[i] %>  </option>
 									            <% }
 									        %>
 									    </select>
@@ -344,7 +424,7 @@
 									    <label>Parent/Guardian 2 Email</label>
 									    <input type="text" class="form-control" name="parent2email" value="<%= user.parent2email %>">
 									</div>
-								<button type="submit" class="btn btn-wide">Submit</button>
+								<button type="submit" class="btn btn-wide">Update</button>
 								</form>
 			                </div>
 			            </div>

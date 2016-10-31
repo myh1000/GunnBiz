@@ -28,9 +28,9 @@ module.exports = mongoose.model('User',{
 	DECA_regionalsEventsFinalized: Number,
 	DECA_roleplayPartner: String,
 	DECA_registrationPayment: String,
-	DECA_statesRegistered: Number,
-	DECA_statesForms: String,
-	DECA_statesChecks: String,
+	DECA_regionalsRegistered: Number,
+	DECA_regionalsForms: String,
+	DECA_regionalsChecks: String,
 	FBLA_regionalsRoleplay: String,
 	FBLA_regionalsWritten: String,
 	FBLA_regionalsTShirt: String,
@@ -44,7 +44,7 @@ module.exports = mongoose.model('User',{
 	FBLA_regionalsEventsFinalized: Number,
 	FBLA_roleplayPartner: String,
 	FBLA_registrationPayment: String,
-	FBLA_statesRegistered: Number,
-	FBLA_statesForms: String,
-	FBLA_statesChecks: String
+	FBLA_regionalsRegistered: Number,
+	FBLA_regionalsForms: String,
+	FBLA_regionalsChecks: String
 });
