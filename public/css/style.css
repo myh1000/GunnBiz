@@ -74,6 +74,9 @@ a:active {
 .container.full-width {
     width: 95%;
 }
+label {
+    margin-top: 12px;
+}
 .btn {
   font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: bold;
@@ -86,6 +89,7 @@ a:active {
   border-radius: 1px;
 }
 .btn.btn-wide {
+  margin-top: 10px;
   border-color: #ccc;
   font-size: 15px;
   background-color: #fff;
