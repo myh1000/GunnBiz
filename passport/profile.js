@@ -10,6 +10,7 @@ module.exports = mongoose.model('User',{
 	studentID: Number,
 	phoneNumber: Number,
 	year: String,
+	birthday: String,
 	resetPasswordToken: String,
 	resetPasswordExpires: Date,
 	parent1email: String,

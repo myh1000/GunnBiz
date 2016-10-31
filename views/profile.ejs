@@ -104,8 +104,8 @@
 		</div>
 		<div class="col-lg-12">
             <ul id="myTab" style="margin-bottom: 20px;" class="nav nav-tabs nav-justified">
-                <li class="active"><a href="#service-one" data-toggle="tab" aria-expanded="true"><i class="fa fa-tree"></i> DECA</a></li>
-				<li class=""><a href="#service-two" data-toggle="tab" aria-expanded="false"><i class="fa fa-support"></i> FBLA</a></li>
+                <li class="active"><a href="#service-one" data-toggle="tab" aria-expanded="true"><i class="fa fa-briefcase"></i> DECA</a></li>
+				<li class=""><a href="#service-two" data-toggle="tab" aria-expanded="false"><i class="fa fa-briefcase"></i> FBLA</a></li>
 				<li class=""><a href="#service-three" data-toggle="tab" aria-expanded="false"><i class="fa fa-user"></i> Info</a></li>
             </ul>
 
@@ -312,14 +312,40 @@
 						</div>
 					</div>
 				</div>
-				<div class="tab-pane fade active in" id="service-three">
+				<div class="tab-pane fade" id="service-three">
 					<div class="col-md-12">
 			            <div class="panel panel-default">
 			                <div class="panel-heading">
 								<h4 style="font-size: 20px"><i class="fa fa-user"></i> Profile Information</h4>
 			                </div>
 			                <div class="panel-body">
+								<form action="/setinfo" method="post">
+									<div class="form-group">
 
+									    <label>First Name</label>
+									    <input type="text" class="form-control" name="firstname" value="<%= user.firstname %>">
+									    <label>Last Name</label>
+									    <input type="text" class="form-control" name="lastname" value="<%= user.lastname %>">
+									    <label>Grade</label>
+									    <select name="grade" class="form-control" id="grade" selected=<%= user.year %>>
+									        <%
+									            var options = [9,10,11,12]
+									            for(var i = 0; i < options.length; i++) { %>
+									                <option <% if (user.grade == options[i]) { %>selected<% } %> >  <%= options[i] %>  </option>
+									            <% }
+									        %>
+									    </select>
+									    <label>Birthday</label>
+									    <input type="date" class="form-control" name="birthday" value="<%= user.birthday %>">
+									    <label>Student ID</label>
+									    <input type="text" class="form-control" name="studentID" value="<%= user.studentID %>">
+									    <label>Parent/Guardian 1 Email</label>
+									    <input type="text" class="form-control" name="parent1email" value="<%= user.parent1email %>">
+									    <label>Parent/Guardian 2 Email</label>
+									    <input type="text" class="form-control" name="parent2email" value="<%= user.parent2email %>">
+									</div>
+								<button type="submit" class="btn btn-wide">Submit</button>
+								</form>
 			                </div>
 			            </div>
 			        </div>
