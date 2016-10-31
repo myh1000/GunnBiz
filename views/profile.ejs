@@ -1,146 +1,226 @@
 <html lang="en"><head>
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" type="image/png" href="img/favicon.png">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<link rel="icon" type="image/png" href="img/favicon.png">
 
-    <title><%= title %></title>
+	<title><%= title %></title>
 
-    <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+	<!-- Bootstrap Core CSS -->
+	<link href="css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Custom CSS -->
-    <link href="css/style.css" rel="stylesheet">
+	<!-- Custom CSS -->
+	<link href="css/style.css" rel="stylesheet">
 
-    <!-- Custom Fonts -->
-    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="css/myriad.css" rel="stylesheet" type="text/css">
+	<!-- Custom Fonts -->
+	<link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link href="css/myriad.css" rel="stylesheet" type="text/css">
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+	<![endif]-->
 
 </head>
 
 <body>
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-default navbar-fixed-top navbar-scroll" role="navigation">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="/"><img class="logo" src="/img/logo.png">Gunn Business</a>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="news">News</a>
-                    </li>
-                    <li>
-                        <a href="about">About</a>
-                    </li>
-                    <li>
-                        <a href="events">Events</a>
-                    </li>
-                    <li class="dropdown">
-                        <a href="projects" class="dropdown-toggle" data-toggle="dropdown">Projects <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="projects">About Projects</a>
-                            </li><li>
-                            </li><li>
-                                <a href="ae">American Enterprise</a>
-                            </li>
-                            <li>
-                                <a href="pb">Partnership with Business</a>
-                            </li>
-                            <li>
-                                <a href="cs">Community Service</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <% if (login) { %>
-                        <li>
-                            <a class="nav-bold" href="profile">Profile</a>
-                        </li>
-                    <% } %>
-                    <li>
-                        <% if (login) { %>
-                            <a href="logout">Logout</a>
-                        <% }else{ %>
-                            <a href="login">Login</a>
-                        <% } %>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
+	<!-- Navigation -->
+	<nav class="navbar navbar-default navbar-fixed-top navbar-scroll" role="navigation">
+		<div class="container">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="/"><img class="logo" src="/img/logo.png">Gunn Business</a>
+			</div>
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav navbar-right">
+					<li>
+						<a href="news">News</a>
+					</li>
+					<li>
+						<a href="about">About</a>
+					</li>
+					<li>
+						<a href="events">Events</a>
+					</li>
+					<li class="dropdown">
+						<a href="projects" class="dropdown-toggle" data-toggle="dropdown">Projects <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li>
+								<a href="projects">About Projects</a>
+							</li><li>
+							</li><li>
+								<a href="ae">American Enterprise</a>
+							</li>
+							<li>
+								<a href="pb">Partnership with Business</a>
+							</li>
+							<li>
+								<a href="cs">Community Service</a>
+							</li>
+						</ul>
+					</li>
+					<% if (login) { %>
+						<li>
+							<a class="nav-bold" href="profile">Profile</a>
+						</li>
+					<% } %>
+					<li>
+						<% if (login) { %>
+							<a href="logout">Logout</a>
+						<% }else{ %>
+							<a href="login">Login</a>
+						<% } %>
+					</li>
+				</ul>
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
+		<!-- /.container -->
+	</nav>
 
-    <div class="container">
-        <div class="row heading">
-            <h1>Welcome, <%= user.firstName %> <%= user.lastName %> </h1>
-        </div>
-    </div>
-    <div class="container">
-        <div class="row">
-            <li>Email: <%= user.email %></li>
-            <li>Year: <%= user.year %></li>
-            <li>Student ID: <%= user.studentID %></li>
-        </div>
-        <div class="col-md-12">
-            <!-- <form id="form-signin" method="POST" action="/meme"> //editing profile
-                <div class="form-group">
-                    <label for="email">Email address</label>
-                    <input type="email" class="form-control" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="phoneNumber">Phone Number</label>
-                    <input type="number" pattern="[0-9]*" class="form-control" name="phoneNumber" required>
-                </div>
-                <div class="form-group">
-                    <label for="pwd">Password</label>
-                    <input type="password" class='form-control nomargin' name="password" required>
-                </div>
-                <button type="submit" class="btn btn-default">Submit</button>
-                <div>
-                    <% if (message.length > 0) { %>
-                        <p id="message"><%= message %></p>
-                    <% } %>
-                </div>
-            </form> -->
-        </div>
+	<div class="container">
+		<div style="padding: 50px 0 20px 0">
+			<h1>Welcome, <%= user.firstName %> <%= user.lastName %> </h1>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<% if (user.DECA_registrationPayment == null){ %>
+				<p style="color:red;"><b>DECA Registration Payment: Unsubmitted</b></p>
+				<%
+			}	else{
+				%>
+				<p style="color:green"><b>FBLA Registration Payment: Submitted</b></p>
+				<%
+			}
+			%>
+			<% if (user.FBLA_registrationPayment == null){ %>
+				<p style="color:red;"><b>FBLA Registration Payment: Unsubmitted</b></p>
+				<%
+			}	else{
+				%>
+				<p style="color:green"><b>FBLA Registration Payment: Submitted</b></p>
+				<%
+			}
+			%>
+			<% if (user.DECA_statesRegistered == null){
+				%>
+				<p style="color:red;"><b>DECA States Registration: Unsubmitted</b></p>
+				<%
+			}	else{
+				%>
+				<p style="color:green"><b>DECA States Registration: Submitted</b></p>
+				<%
+			}
+			%>
+			<% if (user.FBLA_statesRegistered == null){
+				%>
+				<p style="color:red;"><b>FBLA States Registration: Unsubmitted</b></p>
+				<%
+			}	else{
+				%>
+				<p style="color:green"><b>FBLA States Registration: Submitted</b></p>
+				<%
+			}
+			%>
 
+			<% if (user.DECA_statesChecks == null){
+				%>
+						 <p style="color:red;"><b>DECA States Checks: Unsubmitted</b></p>
+				<%
+			}	else{
+				%>
+				<p style="color:green"><b>DECA States Checks: Submitted</b></p>
+				<%
+			}
+			%>
 
-    </div>
+			<% if (user.FBLA_statesChecks == null){
+				%>
+				<p style="color:red;"><b>FBLA States Checks: Unsubmitted</b></p>
+				<%
+			}	else{
+				%>
+				<p style="color:green"><b>FBLA States Checks: Submitted</b></p>
+				<%
+			}
+			%>
 
-    <!-- Footer -->
-    <%- include('partials/footer') %>
-    <%- include('partials/contact') %>
+			<% if (user.DECA_statesForms == null){
+				%>
+				<p style="color:red;"><b>DECA States Forms: Unsubmitted</b></p>
+				<%
+			}	else{
+				%>
+				<p style="color:green"><b>DECA States Forms: Submitted</b></p>
+				<%
+			}
+			%>
 
-    <!-- jQuery -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.js"></script>
+			<% if (user.FBLA_statesForms == null){
+				%>
+				<p style="color:red;"><b>FBLA States Forms: Unsubmitted</b></p>
+				<%
+			}	else{
+				%>
+				<p style="color:green"><b>FBLA States Forms: Submitted</b></p>
+				<%
+			}
+			%>
+			<li>Email: <%= user.email %></li>
+			<li>Year: <%= user.year %></li>
+			<li>Student ID: <%= user.studentID %></li>
+		</div>
+		<div class="col-md-12" id="lead-container">
+			<form id="form-signin" method="POST" action="/meme">
+				<div class="form-group">
+					<label for="email">Email address</label>
+					<input type="email" class="form-control" name="email" required>
+				</div>
+				<div class="form-group">
+					<label for="phoneNumber">Phone Number</label>
+					<input type="number" pattern="[0-9]*" class="form-control" name="phoneNumber" required>
+				</div>
+				<div class="form-group">
+					<label for="pwd">Password</label>
+					<input type="password" class='form-control nomargin' name="password" required>
+				</div>
+				<button type="submit" class="btn btn-default">Submit</button>
+				<div>
+					<% if (message.length > 0) { %>
+						<p id="message"><%= message %></p>
+					<% } %>
+				</div>
+			</form>
+		</div>
+	</div>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="javascripts/bootstrap.min.js"></script>
+	<!-- Footer -->
+	<%- include('partials/footer') %>
+	<%- include('partials/contact') %>
 
-    <!-- Custom JavaScript -->
-    <script src="javascripts/main.js"></script>
-    <!-- <script src="res/js/nav.js"></script> -->
+	<!-- jQuery -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.js"></script>
+
+	<!-- Bootstrap Core JavaScript -->
+	<script src="javascripts/bootstrap.min.js"></script>
+
+	<!-- Custom JavaScript -->
+	<script src="javascripts/main.js"></script>
+	<!-- <script src="res/js/nav.js"></script> -->
 
 
 
