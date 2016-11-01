@@ -241,10 +241,11 @@
 								    </div>
 
 								    <% if(user.DECA_regionalsRegistered == 1){%>
-										<button type="submit" class="btn btn-wide">Update</button>
+										<button  style="margin-right: 5px;" type="submit" name="submitbutton" class="btn btn-wide" value="submit">Update</button>
+										<input type="submit" id="deca-submit-form" name="submitbutton" class="hidden" value="cancel"/>
+										<a data-toggle="modal" data-target="#DECAcancel"><button type="button" class="btn btn-wide">Cancel Signups</button></a>
 								        <%} else { %>
-								        <!-- <button type="submit" class="btn-submit btn btn-warning btn-lg" name="submitbutton" value="save">Register</button> -->
-										<button type="submit" class="btn btn-wide">Submit</button>
+										<button type="submit" name="submitbutton" class="btn btn-wide" value="submit">Submit</button>
 								        <%}%>
 								</form>
 			                </div>
@@ -308,84 +309,33 @@
 								%>
 								<form action="/setFBLARegionals" method="post">
 								<div class="form-group">
-								    <label>Roleplay</label>
-								        <select name="FBLA_regionalsRoleplay" class="form-control" id="grade" selected=<%= user.FBLA_regionalsRoleplay %>>
+								    <label>Event</label>
+								        <select name="FBLA_regionalsEvent" class="form-control" id="grade" selected=<%= user.FBLA_regionalsEvent %>>
 								            <%
 								                var options = [
 								                    "NONE SELECTED",
-								                    "PBM Principles of Business Management and Administration",
-								                    "PFN Principles of Finance",
-								                    "PHT Principles of Hospitality and Tourism",
-								                    "PMK Principles of Marketing",
-								                    "BLTDM Business Law and Ethics Team Decision Making",
-								                    "BTDM Buying and Merchandising Team Decision Making",
-								                    "FTDM Financial Services Team Decision Making",
-								                    "HTDM Hospitality Services Team Decision Making",
-								                    "MTDM Marketing Communications Team Decision Making",
-								                    "STDM Sports and Entertainment Marketing Team Decision Making",
-								                    "TTDM Travel and Tourism Marketing Team Decision Making",
-								                    "ACT Accounting Applications",
-								                    "AAM Apparel and Accessories Marketing Series",
-								                    "ASM Automotive Services Marketing Series",
-								                    "BFS Business Finance Series",
-								                    "BSM Business Services Marketing Series",
-								                    "FMS Food Marketing Series",
-								                    "HLM Hotel and Lodging Management Series",
-								                    "HRM Human Resource Management Series",
-								                    "MMS Marketing Management Series",
-								                    "QSRM Quick Serve Restaurant Management Series",
-								                    "RFSM Restaurant and Food Service Management",
-								                    "RMS Retail Merchandising Series",
-								                    "SEM Sports and Entertainment Marketing Series",
-								                    "PFL Personal Financial Literacy"
-								                ]
+								                    "3-D Animation", "Accounting I", "Accounting II", "Advertising", "Agribusiness", "American Enterprise Project", "Banking & Financial Systems", "Business Calculations", "Business Communication", "Business Ethics", "Business Financial Plan", "Business Law", "Business Plan", "Client Service", "Coding & Programming", "Community Service Project", "Computer Applications", "Computer Game & Simulation Programming", "Computer Problem Solving", "Cyber Security", "Database Design & Application", "Digital Video Production", "E-business", "Economics", "Electronic Career Portfolio", "Emerging Business Issues", "Entrepreneurship", "FBLA Principles & Procedures (9th & 10th grades)", "Future Business Leader", "Global Business", "Graphic Design", "Health Care Administration", "Help Desk", "Hospitality Management", "Impromptu Speaking", "Insurance & Risk Management", "Introduction to Business (9th & 10th grades)", "Introduction to Business Communication (9th & 10th grades)", "Introduction to Business Presentation (9th & 10th grades)", "Introduction to Business Procedures (9th & 10th grades)", "Introduction to Financial Math (9th & 10th grades)", "Introduction to Information Technology (9th & 10th grades)", "Introduction to Parliamentary Procedure (9th & 10th grades)", "Job Interview", "Journalism", "LifeSmarts", "Local Chapter Annual Business Report", "Management Decision Making", "Management Information Systems", "Marketing", "Microsoft Office Specialist (MOS) Excel", "Microsoft Office Specialist (MOS) Word", "Mobile Application Development", "Network Design", "Networking Concepts", "Organizational Leadership", "Parliamentary Procedure", "Partnership with Business Project", "Personal Finance", "Public Service Announcement", "Public Speaking I (9th & 10th grades)", "Public Speaking II", "Publication Design", "Sales Presentation", "Securities & Investments", "Social Media Campaign", "Sports & Entertainment Management", "Spreadsheet Applications", "Virtual Business Management Challenge", "Website Design", "Word Processing"]
 								                for(var i = 0; i < options.length; i++) { %>
-								                    <option <% if (user.FBLA_regionalsRoleplay == options[i]) { %>selected<% } %> >  <%= options[i] %>  </option>
+								                    <option <% if (user.FBLA_regionalsEvent == options[i]) { %>selected<% } %> >  <%= options[i] %>  </option>
 								                <% } %>
 								        </select>
 
-								        <label>Roleplay Partner</label>
-								        <input type="text" class="form-control" name="FBLA_roleplayPartner" value="<%= user.FBLA_roleplayPartner %>">
-								        <label>Written</label>
-								        <select name="FBLA_regionalsWritten" class="form-control" id="grade" selected=<%= user.FBLA_regionalsWritten %>>
-								            <%
-								                var options = [
-								                    "NONE SELECTED",
-								                    "BOR Business Services Operations Research",
-								                    "BMOR Buying and Merchandising Operations Research",
-								                    "FOR Finance Operations",
-								                    "HTOR Hospitality and Tourism Operations Research",
-								                    "SEOR Sports and Entertainment Marketing Operations Research",
-								                    "EIP Innovation Plan",
-								                    "EIB Independent Business Plan",
-								                    "ESB Start-Up Business Plan",
-								                    "EBG Business Growth Plan",
-								                    "IBP International Business Plan",
-								                    "ADC Advertising Campaign Event",
-								                    "FMP Fashion Merchandising Promotion Plan",
-								                    "SEPP Sports and Entertainment Promotion Plan",
-								                    "FCE Financial Consulting Event",
-								                    "HTPS Hospitality and Tourism Professional Selling",
-								                    "PSE Professional Selling"
-
-								                ]
-								                for(var i = 0; i < options.length; i++) { %>
-								                    <option <% if (user.FBLA_regionalsWritten == options[i]) { %>selected<% } %> >  <%= options[i] %>  </option>
-								                <% }
-								            %>
-								        </select>
-
-								            <label>Written Partner 1</label>
-								            <input type="text" class="form-control" name="FBLA_writtenPartner1"  value="<%= user.FBLA_writtenPartner1 %>" >
-								            <label>Written Partner 2</label>
-								            <input type="text" class="form-control" name="FBLA_writtenPartner2"  value="<%= user.FBLA_writtenPartner2 %>" >
-								    </div>
+								        <label>Event Partner 1 (If Applicable)</label>
+								        <input type="text" class="form-control" name="FBLA_eventPartner1" value="<%= user.FBLA_eventPartner1 %>">
+										<label>Event Partner 2 (If Applicable)</label>
+								        <input type="text" class="form-control" name="FBLA_eventPartner2" value="<%= user.FBLA_eventPartner2 %>">
+										<label>Event Partner 3 (If Applicable)</label>
+								        <input type="text" class="form-control" name="FBLA_eventPartner3" value="<%= user.FBLA_eventPartner3 %>">
+										<label>Event Partner 4 (If Applicable)</label>
+								        <input type="text" class="form-control" name="FBLA_eventPartner4" value="<%= user.FBLA_eventPartner4 %>">
+									</div>
 
 								    <% if(user.FBLA_regionalsRegistered == 1){%>
-								        <button type="submit" class="btn btn-wide">Update</button>
+								        <button style="margin-right: 5px;" name="submitbutton" type="submit" class="btn btn-wide" value="submit">Update</button>
+										<input type="submit" id="fbla-submit-form" name="submitbutton" class="hidden" value="cancel"/>
+										<a data-toggle="modal" data-target="#FBLAcancel"><button type="button" class="btn btn-wide">Cancel Signups</button></a>
 								        <%} else { %>
-								        <!-- <button type="submit" class="btn-submit btn btn-warning btn-lg" name="submitbutton" value="save">Register</button> -->
-								        <button type="submit" class="btn btn-wide">Submit</button>
+								        <button type="submit" name="submitbutton" class="btn btn-wide" value="submit">Submit</button>
 								        <%}%>
 								</form>
 							</div>
@@ -426,7 +376,7 @@
 									    <label>Parent/Guardian 2 Email</label>
 									    <input type="text" class="form-control" name="parent2email" value="<%= user.parent2email %>">
 									</div>
-								<button type="submit" class="btn btn-wide">Update</button>
+								<button type="submit" name="submitbutton" class="btn btn-wide">Update</button>
 								</form>
 			                </div>
 			            </div>
@@ -434,6 +384,42 @@
 				</div>
             </div>
         </div>
+	</div>
+
+	<div class="modal fade" id="DECAcancel" tabindex="-1" role="dialog" aria-labelledby="contactLabel" aria-hidden="true">
+	    <div style="margin: 200px auto;" class="modal-dialog">
+	        <div class="modal-content">
+	            <div class="modal-header">
+	                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+	                <h3 class="modal-title" id="contactLabel">Are you sure?</h3>
+	            </div>
+	            <div class="modal-body">
+	                Are you sure?
+	            </div>
+	            <div class="confirm-modal-footer">
+					<label style="margin-top: 0px; padding-top: 16px;" for="deca-submit-form" role="button" class="btn btn-default" tabindex="0">YES</label>
+					<button type="button" class="btn btn-default" data-dismiss="modal">NO</button>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+
+	<div class="modal fade" id="FBLAcancel" tabindex="-1" role="dialog" aria-labelledby="contactLabel" aria-hidden="true">
+	    <div style="margin: 200px auto;" class="modal-dialog">
+	        <div class="modal-content">
+	            <div class="modal-header">
+	                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+	                <h3 class="modal-title" id="contactLabel">Are you sure?</h3>
+	            </div>
+	            <div class="modal-body">
+	                Are you sure?
+	            </div>
+	            <div class="confirm-modal-footer">
+					<label style="margin-top: 0px; padding-top: 16px;" for="fbla-submit-form" role="button" class="btn btn-default" tabindex="0">YES</label>
+					<button type="button" class="btn btn-default" data-dismiss="modal">NO</button>
+	            </div>
+	        </div>
+	    </div>
 	</div>
 
 	<!-- Footer -->

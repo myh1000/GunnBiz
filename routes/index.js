@@ -190,35 +190,65 @@ module.exports = function(app, passport){
 	});
 	app.post('/setDECARegionals', function(req, res)
 	{
-		console.log(req.body.DECA_regionalsWritten);
-		req.user.DECA_regionalsWritten = req.body.DECA_regionalsWritten;
-		req.user.DECA_writtenPartner1 = req.body.DECA_writtenPartner1;
-		req.user.DECA_writtenPartner2 = req.body.DECA_writtenPartner2;
-		req.user.DECA_regionalsRoleplay = req.body.DECA_regionalsRoleplay;
-		req.user.DECA_roleplayPartner = req.body.DECA_roleplayPartner;
-		// req.user.DECA_regionalsTShirt = req.body.DECA_regionalsTShirt;
-		req.user.DECA_regionalsRegistered = 1;
-		req.user.save(function (err, member) {
-			if (err) return console.error(err);
-			console.log("saved");
-		});
-		res.redirect('/profile');
+		if (req.body.submitbutton == 'cancel'){
+			req.user.DECA_regionalsWritten = null;
+			req.user.DECA_writtenPartner1 = null;
+			req.user.DECA_writtenPartner2 = null;
+			req.user.DECA_regionalsRoleplay = null;
+			req.user.DECA_roleplayPartner = null;
+			// req.user.DECA_regionalsTShirt = req.body.DECA_regionalsTShirt;
+			req.user.DECA_regionalsRegistered = null;
+			req.user.save(function (err, member){
+				if (err) return console.error(err);
+				console.log("saved");
+			});
+			res.redirect('/profile');
+		}
+		else {
+			req.user.DECA_regionalsWritten = req.body.DECA_regionalsWritten;
+			req.user.DECA_writtenPartner1 = req.body.DECA_writtenPartner1;
+			req.user.DECA_writtenPartner2 = req.body.DECA_writtenPartner2;
+			req.user.DECA_regionalsRoleplay = req.body.DECA_regionalsRoleplay;
+			req.user.DECA_roleplayPartner = req.body.DECA_roleplayPartner;
+			// req.user.DECA_regionalsTShirt = req.body.DECA_regionalsTShirt;
+			req.user.DECA_regionalsRegistered = 1;
+			req.user.save(function (err, member) {
+				if (err) return console.error(err);
+				console.log("saved");
+			});
+			res.redirect('/profile');
+		}
 	});
 	app.post('/setFBLARegionals', function(req, res)
 	{
-		console.log(req.body.DECA_regionalsWritten);
-		req.user.FBLA_regionalsWritten = req.body.FBLA_regionalsWritten;
-		req.user.FBLA_writtenPartner1 = req.body.FBLA_writtenPartner1;
-		req.user.FBLA_writtenPartner2 = req.body.FBLA_writtenPartner2;
-		req.user.FBLA_regionalsRoleplay = req.body.FBLA_regionalsRoleplay;
-		req.user.FBLA_roleplayPartner = req.body.FBLA_roleplayPartner;
-		// req.user.FBLA_regionalsTShirt = req.body.FBLA_regionalsTShirt;
-		req.user.FBLA_regionalsRegistered = 1;
-		req.user.save(function (err, member) {
-			if (err) return console.error(err);
-			console.log("saved");
-		});
-		res.redirect('/profile');
+		if (req.body.submitbutton == 'cancel'){
+			req.user.FBLA_regionalsEvent = null;
+			req.user.FBLA_eventPartner1 = null;
+			req.user.FBLA_eventPartner2 = null;
+			req.user.FBLA_eventPartner3 = null;
+			req.user.FBLA_eventPartner4 = null;
+			// req.user.FBLA_regionalsTShirt = req.body.FBLA_regionalsTShirt;
+			req.user.FBLA_regionalsRegistered = null;
+			req.user.save(function (err, member){
+				if (err) return console.error(err);
+				console.log("saved");
+			});
+			res.redirect('/profile');
+		}
+		else {
+			req.user.FBLA_regionalsEvent = req.body.FBLA_regionalsEvent;
+			req.user.FBLA_eventPartner1 = req.body.FBLA_eventPartner1;
+			req.user.FBLA_eventPartner2 = req.body.FBLA_eventPartner2;
+			req.user.FBLA_eventPartner3 = req.body.FBLA_eventPartner3;
+			req.user.FBLA_eventPartner4 = req.body.FBLA_eventPartner4;
+			// req.user.FBLA_regionalsTShirt = req.body.FBLA_regionalsTShirt;
+			req.user.FBLA_regionalsRegistered = 1;
+			req.user.save(function (err, member) {
+				if (err) return console.error(err);
+				console.log("saved");
+			});
+			res.redirect('/profile');
+		}
 	});
 
     // return app;
