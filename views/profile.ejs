@@ -308,27 +308,148 @@
 								}
 								%>
 								<form action="/setFBLARegionals" method="post">
-								<div class="form-group">
-								    <label>Event</label>
-								        <select name="FBLA_regionalsEvent" class="form-control" id="grade" selected=<%= user.FBLA_regionalsEvent %>>
-								            <%
-								                var options = [
-								                    "NONE SELECTED",
-								                    "3-D Animation", "Accounting I", "Accounting II", "Advertising", "Agribusiness", "American Enterprise Project", "Banking & Financial Systems", "Business Calculations", "Business Communication", "Business Ethics", "Business Financial Plan", "Business Law", "Business Plan", "Client Service", "Coding & Programming", "Community Service Project", "Computer Applications", "Computer Game & Simulation Programming", "Computer Problem Solving", "Cyber Security", "Database Design & Application", "Digital Video Production", "E-business", "Economics", "Electronic Career Portfolio", "Emerging Business Issues", "Entrepreneurship", "FBLA Principles & Procedures (9th & 10th grades)", "Future Business Leader", "Global Business", "Graphic Design", "Health Care Administration", "Help Desk", "Hospitality Management", "Impromptu Speaking", "Insurance & Risk Management", "Introduction to Business (9th & 10th grades)", "Introduction to Business Communication (9th & 10th grades)", "Introduction to Business Presentation (9th & 10th grades)", "Introduction to Business Procedures (9th & 10th grades)", "Introduction to Financial Math (9th & 10th grades)", "Introduction to Information Technology (9th & 10th grades)", "Introduction to Parliamentary Procedure (9th & 10th grades)", "Job Interview", "Journalism", "LifeSmarts", "Local Chapter Annual Business Report", "Management Decision Making", "Management Information Systems", "Marketing", "Microsoft Office Specialist (MOS) Excel", "Microsoft Office Specialist (MOS) Word", "Mobile Application Development", "Network Design", "Networking Concepts", "Organizational Leadership", "Parliamentary Procedure", "Partnership with Business Project", "Personal Finance", "Public Service Announcement", "Public Speaking I (9th & 10th grades)", "Public Speaking II", "Publication Design", "Sales Presentation", "Securities & Investments", "Social Media Campaign", "Sports & Entertainment Management", "Spreadsheet Applications", "Virtual Business Management Challenge", "Website Design", "Word Processing"]
-								                for(var i = 0; i < options.length; i++) { %>
-								                    <option <% if (user.FBLA_regionalsEvent == options[i]) { %>selected<% } %> >  <%= options[i] %>  </option>
-								                <% } %>
-								        </select>
+									<div class="form-group">
+									    <label>Section Level Event</label>
+									        <select name="FBLA_regionalsEvent" class="form-control" id="grade" selected=<%= user.FBLA_regionalsEvent %>>
+									            <%
+									                var options = [
+									                    "NONE SELECTED",
+														"Accounting",
+														"Accounting",
+														"Agribusiness",
+														"Business Calculations",
+														"Business Communication",
+														"Business Law",
+														"Computer Applications",
+														"Computer Problem Solving",
+														"Creed",
+														"Cyber Security",
+														"Database Design & Applications",
+														"Economics",
+														"Entrepreneurship",
+														"FBLA Principles and Procedures",
+														"Future Business Leader",
+														"Global Business",
+														"Health Care Administration",
+														"Hospitality Management",
+														"Impromptu Speaking",
+														"Insurance & Risk Management",
+														"Introduction to Business",
+														"Introduction to Business Communication",
+														"Introduction to Business Procedures",
+														"Introduction to Financial Math",
+														"Introduction to Information Technology",
+														"Job Interview",
+														"Management Decision Making",
+														"Marketing",
+														"Parliamentary Procedure",
+														"Personal Finance",
+														"Public Speaking",
+														"Public Speaking",
+														"Sales Presentation",
+														"Securities & Investments",
+														"Sports & Entertainment Management",
+														"Spreadsheet Applications",
+														"Word Processing"]
+									                for(var i = 0; i < options.length; i++) { %>
+									                    <option <% if (user.FBLA_regionalsEvent == options[i]) { %>selected<% } %> >  <%= options[i] %>  </option>
+									                <% } %>
+									        </select>
 
-								        <label>Event Partner 1 (If Applicable)</label>
-								        <input type="text" class="form-control" name="FBLA_eventPartner1" value="<%= user.FBLA_eventPartner1 %>">
-										<label>Event Partner 2 (If Applicable)</label>
-								        <input type="text" class="form-control" name="FBLA_eventPartner2" value="<%= user.FBLA_eventPartner2 %>">
-										<label>Event Partner 3 (If Applicable)</label>
-								        <input type="text" class="form-control" name="FBLA_eventPartner3" value="<%= user.FBLA_eventPartner3 %>">
-										<label>Event Partner 4 (If Applicable)</label>
-								        <input type="text" class="form-control" name="FBLA_eventPartner4" value="<%= user.FBLA_eventPartner4 %>">
-									</div>
+									        <label>Event Partner 1 (If Applicable)</label>
+									        <input type="text" class="form-control" name="FBLA_eventPartner1" value="<%= user.FBLA_eventPartner1 %>">
+											<label>Event Partner 2 (If Applicable)</label>
+									        <input type="text" class="form-control" name="FBLA_eventPartner2" value="<%= user.FBLA_eventPartner2 %>">
+											<label>Event Partner 3 (If Applicable)</label>
+									        <input type="text" class="form-control" name="FBLA_eventPartner3" value="<%= user.FBLA_eventPartner3 %>">
+											<label>Event Partner 4 (If Applicable)</label>
+									        <input type="text" class="form-control" name="FBLA_eventPartner4" value="<%= user.FBLA_eventPartner4 %>">
+										</div>
+										<div class="form-group">
+										    <label>State Level Event</label>
+										        <select name="FBLA_stateEvent" class="form-control" id="grade" selected=<%= user.FBLA_stateEvent %>>
+										            <%
+										                var options = [
+										                    "NONE SELECTED",
+															"3D Animation",
+															"Accounting",
+															"Accounting",
+															"Agribusiness",
+															"American Enterprise Project",
+															"Banking & Financial Systems",
+															"Business Calculations",
+															"Business Communication",
+															"Business Ethics",
+															"Business Financial Plan ",
+															"Business Law",
+															"Business Plan ",
+															"Client Service",
+															"Community Service Project",
+															"Computer Applications",
+															"Computer Game & Simulation Programming ",
+															"Computer Problem Solving",
+															"Creed",
+															"Cyber Security",
+															"Database Design & Applications",
+															"Desktop Application Programming",
+															"Digital Video Production ",
+															"E-business ",
+															"Economics",
+															"Electronic Career Portfolio",
+															"Emerging Business Issues",
+															"Entrepreneurship",
+															"FBLA Principles and Procedures",
+															"Future Business Leader",
+															"Global Business",
+															"Graphic Design ",
+															"Health Care Administration",
+															"Help Desk",
+															"Hospitality Management",
+															"Impromptu Speaking",
+															"Insurance & Risk Management",
+															"Introduction to Business",
+															"Introduction to Business Communication",
+															"Introduction to Business Presentation",
+															"Introduction to Business Procedures",
+															"Introduction to Financial Math",
+															"Introduction to Information Technology",
+															"Introduction to Parliamentary Procedure",
+															"Job Interview",
+															"Local Chapter Annual Business Report",
+															"Management Decision Making",
+															"Management Information Systems",
+															"Marketing",
+															"Mobile Application Development",
+															"Network Design",
+															"Networking Concepts",
+															"Parliamentary Procedure",
+															"Partnership With Business Project",
+															"Personal Finance",
+															"Public Service Announcement",
+															"Public Speaking",
+															"Public Speaking",
+															"Publication Design",
+															"Sales Presentation",
+															"Securities & Investments",
+															"Social Media Campaign",
+															"Sports & Entertainment Management",
+															"Spreadsheet Applications",
+															"Website Design",
+															"Word Processing"]
+										                for(var i = 0; i < options.length; i++) { %>
+										                    <option <% if (user.FBLA_stateEvent == options[i]) { %>selected<% } %> >  <%= options[i] %>  </option>
+										                <% } %>
+										        </select>
+
+										        <label>Event Partner 1 (If Applicable)</label>
+										        <input type="text" class="form-control" name="FBLA_stateEventPartner1" value="<%= user.FBLA_stateEventPartner1 %>">
+												<label>Event Partner 2 (If Applicable)</label>
+										        <input type="text" class="form-control" name="FBLA_stateEventPartner2" value="<%= user.FBLA_stateEventPartner2 %>">
+												<label>Event Partner 3 (If Applicable)</label>
+										        <input type="text" class="form-control" name="FBLA_stateEventPartner3" value="<%= user.FBLA_stateEventPartner3 %>">
+												<label>Event Partner 4 (If Applicable)</label>
+										        <input type="text" class="form-control" name="FBLA_stateEventPartner4" value="<%= user.FBLA_stateEventPartner4 %>">
+											</div>
 
 								    <% if(user.FBLA_regionalsRegistered == 1){%>
 								        <button style="margin-right: 5px;" name="submitbutton" type="submit" class="btn btn-wide" value="submit">Update</button>

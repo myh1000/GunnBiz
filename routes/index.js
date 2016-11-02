@@ -241,6 +241,11 @@ module.exports = function(app, passport){
 			req.user.FBLA_eventPartner2 = req.body.FBLA_eventPartner2;
 			req.user.FBLA_eventPartner3 = req.body.FBLA_eventPartner3;
 			req.user.FBLA_eventPartner4 = req.body.FBLA_eventPartner4;
+			req.user.FBLA_stateEvent = req.body.FBLA_stateEvent;
+			req.user.FBLA_stateEventPartner1 = req.body.FBLA_stateEventPartner1;
+			req.user.FBLA_stateEventPartner2 = req.body.FBLA_stateEventPartner2;
+			req.user.FBLA_stateEventPartner3 = req.body.FBLA_stateEventPartner3;
+			req.user.FBLA_stateEventPartner4 = req.body.FBLA_stateEventPartner4;
 			// req.user.FBLA_regionalsTShirt = req.body.FBLA_regionalsTShirt;
 			req.user.FBLA_regionalsRegistered = 1;
 			req.user.save(function (err, member) {
