@@ -1,0 +1,202 @@
+<html lang="en"><head>
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<link rel="icon" type="image/png" href="img/favicon.png">
+
+	<title><%= title %></title>
+
+	<!-- Bootstrap Core CSS -->
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+
+	<!-- Custom CSS -->
+	<link href="css/style.css" rel="stylesheet">
+
+	<!-- Custom Fonts -->
+	<link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link href="css/myriad.css" rel="stylesheet" type="text/css">
+
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+	<![endif]-->
+
+</head>
+
+<body>
+
+	<!-- Navigation -->
+	<nav class="navbar navbar-default navbar-fixed-top navbar-scroll" role="navigation">
+		<div class="container">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="/"><img class="logo" src="/img/logo.png">Gunn Business</a>
+			</div>
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav navbar-right">
+					<li>
+						<a href="news">News</a>
+					</li>
+					<li>
+						<a href="about">About</a>
+					</li>
+					<li>
+						<a href="events">Events</a>
+					</li>
+					<li class="dropdown">
+						<a href="projects" class="dropdown-toggle" data-toggle="dropdown">Projects <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li>
+								<a href="projects">About Projects</a>
+							</li><li>
+							</li><li>
+								<a href="ae">American Enterprise</a>
+							</li>
+							<li>
+								<a href="pb">Partnership with Business</a>
+							</li>
+							<li>
+								<a href="cs">Community Service</a>
+							</li>
+						</ul>
+					</li>
+					<% if (login) { %>
+						<li>
+							<a href="profile">Profile</a>
+						</li>
+					<% } %>
+					<li>
+						<% if (login) { %>
+							<a href="logout">Logout</a>
+						<% }else{ %>
+							<a href="login">Login</a>
+						<% } %>
+					</li>
+				</ul>
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
+		<!-- /.container -->
+	</nav>
+
+	<div class="container">
+		<div style="padding: 50px 0 20px 0">
+			<h1 style="font-size: 35px;">Admin Panel</h1>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<!-- <li>Email: <%= user.email %></li>
+			<li>Year: <%= user.year %></li>
+			<li>Student ID: <%= user.studentID %></li> -->
+		</div>
+		<table class="table table-bordered">
+						<thead>
+							<tr>
+								<th>Name</th>
+								<th>Registration</th>
+								<th>DECA Status</th>
+								<th>FBLA Status</th>
+							</tr>
+						</thead>
+						<form action="/admin" method="post">
+					<%
+					    var i = 0;
+						for (var key in members)
+						{
+							i++;
+							if (members.hasOwnProperty(key)) {
+								%>
+									<tr>
+										<td><%= members[key].firstName %> <%= members[key].lastName %></td>
+										<td><% if (members[key].DECA_regionalsRegistered == null){
+											    %>
+											    <font style="color:red;">DECA,</font>
+											    <%
+											}	else{
+											    %>
+											    <font style="color:green">DECA,</font>
+											    <%
+											}
+											%>
+											<% if (members[key].FBLA_regionalsRegistered == null){
+											    %>
+											    <font style="color:red;">FBLA</font>
+											    <%
+											}	else{
+											    %>
+											    <font style="color:green">FBLA</font>
+											    <%
+											}
+											%>
+										</td>
+										<td>
+											<input type="checkbox" name="DECA_registrationPayment<%= i-1 %>" value="checked" <%= members[key].DECA_registrationPayment %>> Registration Fee &nbsp
+											<input type="checkbox" name="DECA_regionalsChecks<%= i-1 %>" value="checked" <%= members[key].DECA_regionalsChecks %>> Checks &nbsp
+											<input type="checkbox" name="DECA_regionalsForms<%= i-1 %>" value="checked" <%= members[key].DECA_regionalsForms %>> Forms &nbsp
+										 </td>
+										 <td>
+											<input type="checkbox" name="FBLA_registrationPayment<%= i-1 %>" value="checked" <%= members[key].FBLA_registrationPayment %>> Registration Fee &nbsp
+											<input type="checkbox" name="FBLA_regionalsChecks<%= i-1 %>" value="checked" <%= members[key].FBLA_regionalsChecks %>> Checks &nbsp
+											<input type="checkbox" name="FBLA_regionalsForms<%= i-1 %>" value="checked" <%= members[key].FBLA_regionalsForms %>> Forms &nbsp
+											<input name="email" style="display:none" value="<%= members[key].email %>">
+											<input type="submit" id="submit-form" name="submitbutton" class="hidden" value="cancel"/>
+										</td>
+									</tr>
+								<%
+							}
+						}
+					%>
+					</form>
+				</table>
+				<a data-toggle="modal" data-target="#confirmchanges"><button type="button" class="btn btn-wide">Confirm Changes</button></a>
+			</div>
+
+	<div class="modal fade" id="confirmchanges" tabindex="-1" role="dialog" aria-labelledby="contactLabel" aria-hidden="true">
+	    <div style="margin: 200px auto;" class="modal-dialog">
+	        <div class="modal-content">
+	            <div class="modal-header">
+	                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+	                <h3 class="modal-title" id="contactLabel">Are you sure?</h3>
+	            </div>
+	            <div class="modal-body">
+	                Are you sure you want to confirm these changes?
+	            </div>
+	            <div class="confirm-modal-footer">
+					<label style="margin-top: 0px; padding-top: 16px;" for="submit-form" role="button" class="btn btn-default" tabindex="0">YES</label>
+					<button type="button" class="btn btn-default" data-dismiss="modal">NO</button>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+
+	<!-- Footer -->
+	<%- include('partials/footer') %>
+	<%- include('partials/contact') %>
+
+	<!-- jQuery -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.js"></script>
+
+	<!-- Bootstrap Core JavaScript -->
+	<script src="javascripts/bootstrap.min.js"></script>
+
+	<!-- Custom JavaScript -->
+	<script src="javascripts/main.js"></script>
+	<!-- <script src="res/js/nav.js"></script> -->
+
+
+
+
+</body></html>
