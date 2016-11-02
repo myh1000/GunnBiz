@@ -15,7 +15,7 @@ module.exports = mongoose.model('User',{
 	resetPasswordToken: String,
 	resetPasswordExpires: Date,
 	parent1email: String,
-    parent2email: String,
+	parent2email: String,
 	DECA_regionalsRoleplay: String,
 	DECA_regionalsWritten: String,
 	DECA_regionalsTShirt: String,
