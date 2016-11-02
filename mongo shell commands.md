@@ -10,5 +10,6 @@ db.<i>collection name</i>.remove( {"username":"testuser"})
 ```
 use gunnbiz
 db.users.find()
-db.users.remove({"studentID":########})
+db.users.remove({ studentID: ########})
+db.users.update({ studentID: ########}, {$set:{isAdmin:true}}, {upsert: true} )
 ```

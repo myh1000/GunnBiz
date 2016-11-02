@@ -134,42 +134,42 @@ module.exports = function(app, passport){
 	// 		res.redirect('/forgot');
 	// 	});
 	// });
-	app.get('/reset/:token', function(req, res) {
-		User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
-			if (!user) {
-				req.flash('error', 'Password reset token is invalid or has expired.');
-				return res.redirect('/forgot');
-			}
-			res.render('reset', {
-				user: req.user,
-				title: 'Gunn Business - Reset Password'
-			});
-		});
-	});
-	app.post('/reset/:token', function(req, res) {
-		async.waterfall([
-			function(done) {
-				User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
-				if (!user) {
-				  req.flash('error', 'Password reset token is invalid or has expired.');
-				  return res.redirect('back');
-				}
-
-				user.password = bCrypt.hashSync(req.body.password, bCrypt.genSaltSync(10), null);
-				user.resetPasswordToken = undefined;
-				user.resetPasswordExpires = undefined;
-
-				user.save(function(err) {
-					req.logIn(user, function(err) {
-					done(err, user);
-					});
-				});
-			});
-		}
-		], function(err) {
-		res.redirect('/');
-		});
-	});
+	// app.get('/reset/:token', function(req, res) {
+	// 	User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
+	// 		if (!user) {
+	// 			req.flash('error', 'Password reset token is invalid or has expired.');
+	// 			return res.redirect('/forgot');
+	// 		}
+	// 		res.render('reset', {
+	// 			user: req.user,
+	// 			title: 'Gunn Business - Reset Password'
+	// 		});
+	// 	});
+	// });
+	// app.post('/reset/:token', function(req, res) {
+	// 	async.waterfall([
+	// 		function(done) {
+	// 			User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
+	// 			if (!user) {
+	// 			  req.flash('error', 'Password reset token is invalid or has expired.');
+	// 			  return res.redirect('back');
+	// 			}
+	//
+	// 			user.password = bCrypt.hashSync(req.body.password, bCrypt.genSaltSync(10), null);
+	// 			user.resetPasswordToken = undefined;
+	// 			user.resetPasswordExpires = undefined;
+	//
+	// 			user.save(function(err) {
+	// 				req.logIn(user, function(err) {
+	// 				done(err, user);
+	// 				});
+	// 			});
+	// 		});
+	// 	}
+	// 	], function(err) {
+	// 	res.redirect('/');
+	// 	});
+	// });
 	/* GET Profile Page */
 	app.get('/profile', isAuthenticated, function(req, res){
 		res.render('profile', { title: 'Gunn Business - Profile', user: req.user, message: req.flash('message')});
@@ -247,6 +247,53 @@ module.exports = function(app, passport){
 				if (err) return console.error(err);
 				console.log("saved");
 			});
+			res.redirect('/profile');
+		}
+	});
+	app.get('/admin', isAuthenticated, function(req, res){
+		if (req.user && req.user.isAdmin === true) {
+			var userMap = {};
+			mongoose.model("User").find({}, function(err, users)
+			{
+			    users.forEach(function(user) {
+					userMap[user._id] = user;
+				});
+				console.log(userMap);
+				res.render('admin', { title: 'Gunn Business - Admin Panel', user: req.user, members: userMap, message: req.flash('message')});
+			});
+        } else {
+			res.redirect('/profile');
+		}
+	});
+	app.post('/admin', isAuthenticated, function(req, res){
+		if (req.user && req.user.isAdmin === true) {
+			var userMap = {};
+			req.body.email.forEach(function(email, index) {
+				mongoose.model("User").findOne({ 'email': req.body.email[index]}, function(err, user) {
+					if (err){
+						console.log(err)
+					}
+					console.log(email)
+					if (! user) {
+						res.json('nope');
+						console.log('nope');
+					}
+					else {
+						console.log(req.body["DECA_registrationPayment" + index],"same");
+						user.DECA_registrationPayment = req.body["DECA_registrationPayment" + index];
+						user.DECA_regionalsChecks = req.body["DECA_regionalsChecks" + index];
+						user.DECA_regionalsForms = req.body["DECA_regionalsForms" + index];
+						user.FBLA_registrationPayment = req.body["FBLA_registrationPayment" + index];
+						user.FBLA_regionalsChecks = req.body["FBLA_regionalsChecks" + index];
+						user.FBLA_regionalsForms = req.body["FBLA_regionalsForms" + index];
+						user.save(function (err) {
+							if (err) return console.error(err);
+						});
+					}
+				})
+			});
+		res.redirect('admin');
+        } else {
 			res.redirect('/profile');
 		}
 	});
