@@ -118,6 +118,45 @@
 								<h4 style="font-size: 20px;"><i class="fa fa-briefcase"></i> DECA Events</h4>
 			                </div>
 			                <div class="panel-body">
+								<% if (user.DECA_registrationPayment == null){ %>
+								    <p style="color:red;"><b>DECA Registration Payment: Unsubmitted</b></p>
+								    <%
+								}	else{
+								    %>
+								    <p style="color:green"><b>DECA Registration Payment: Submitted</b></p>
+								    <%
+								}
+								%>
+								<% if (user.DECA_regionalsRegistered == null){
+								    %>
+								    <p style="color:red;"><b>DECA Regionals Registration: Unsubmitted</b></p>
+								    <%
+								}	else{
+								    %>
+								    <p style="color:green"><b>DECA Regionals Registration: Submitted</b></p>
+								    <%
+								}
+								%>
+								<% if (user.DECA_regionalsChecks == null){
+								    %>
+								    <p style="color:red;"><b>DECA Regionals Checks: Unsubmitted</b></p>
+								    <%
+								}	else{
+								    %>
+								    <p style="color:green"><b>DECA Regionals Checks: Submitted</b></p>
+								    <%
+								}
+								%>
+								<% if (user.DECA_regionalsForms == null){
+								    %>
+								    <p style="color:red;"><b>DECA Regionals Forms: Unsubmitted</b></p>
+								    <%
+								}	else{
+								    %>
+								    <p style="color:green"><b>DECA Regionals Forms: Submitted</b></p>
+								    <%
+								}
+								%>
 								<h2 style="font-size: 20px; color: grey">Please sign up and submit your $25 registration fee in N204 to complete registration.  Check back for confirmation.</h2>
 			                </div>
 			            </div>
@@ -130,6 +169,45 @@
 								<h4 style="font-size: 20px;"><i class="fa fa-briefcase"></i> FBLA Events</h4>
 							</div>
 							<div class="panel-body">
+								<% if (user.FBLA_registrationPayment == null){ %>
+									<p style="color:red;"><b>FBLA Registration Payment: Unsubmitted</b></p>
+									<%
+								}	else{
+									%>
+									<p style="color:green"><b>FBLA Registration Payment: Submitted</b></p>
+									<%
+								}
+								%>
+								<% if (user.FBLA_regionalsRegistered == null){
+									%>
+									<p style="color:red;"><b>FBLA Regionals Registration: Unsubmitted</b></p>
+									<%
+								}	else{
+									%>
+									<p style="color:green"><b>FBLA Regionals Registration: Submitted</b></p>
+									<%
+								}
+								%>
+								<% if (user.FBLA_regionalsChecks == null){
+									%>
+									<p style="color:red;"><b>FBLA Regionals Checks: Unsubmitted</b></p>
+									<%
+								}	else{
+									%>
+									<p style="color:green"><b>FBLA Regionals Checks: Submitted</b></p>
+									<%
+								}
+								%>
+								<% if (user.FBLA_regionalsForms == null){
+									%>
+									<p style="color:red;"><b>FBLA Regionals Forms: Unsubmitted</b></p>
+									<%
+								}	else{
+									%>
+									<p style="color:green"><b>FBLA Regionals Forms: Submitted</b></p>
+									<%
+								}
+								%>
 								<h2 style="font-size: 20px; color: grey">Please sign up and submit your $25 registration fee in N204 to complete registration.  Check back for confirmation.</h2>
 							</div>
 						</div>
