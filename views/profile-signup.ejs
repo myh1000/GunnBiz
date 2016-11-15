@@ -1,0 +1,564 @@
+<html lang="en"><head>
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<link rel="icon" type="image/png" href="img/favicon.png">
+
+	<title><%= title %></title>
+
+	<!-- Bootstrap Core CSS -->
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+
+	<!-- Custom CSS -->
+	<link href="css/style.css" rel="stylesheet">
+
+	<!-- Custom Fonts -->
+	<link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link href="css/myriad.css" rel="stylesheet" type="text/css">
+
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+	<![endif]-->
+
+</head>
+
+<body>
+
+	<!-- Navigation -->
+	<nav class="navbar navbar-default navbar-fixed-top navbar-scroll" role="navigation">
+		<div class="container">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="/"><img class="logo" src="/img/logo.png">Gunn Business</a>
+			</div>
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav navbar-right">
+					<li>
+						<a href="news">News</a>
+					</li>
+					<li>
+						<a href="about">About</a>
+					</li>
+					<li>
+						<a href="events">Events</a>
+					</li>
+					<li class="dropdown">
+						<a href="projects" class="dropdown-toggle" data-toggle="dropdown">Projects <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li>
+								<a href="projects">About Projects</a>
+							</li><li>
+							</li><li>
+								<a href="ae">American Enterprise</a>
+							</li>
+							<li>
+								<a href="pb">Partnership with Business</a>
+							</li>
+							<li>
+								<a href="cs">Community Service</a>
+							</li>
+						</ul>
+					</li>
+					<% if (login) { %>
+						<li>
+							<a class="nav-bold" href="profile">Profile</a>
+						</li>
+					<% } %>
+					<li>
+						<% if (login) { %>
+							<a href="logout">Logout</a>
+						<% }else{ %>
+							<a href="login">Login</a>
+						<% } %>
+					</li>
+				</ul>
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
+		<!-- /.container -->
+	</nav>
+
+	<div class="container">
+		<div style="padding: 50px 0 20px 0">
+			<h1 style="font-size: 35px;">Welcome, <%= user.firstName %> <%= user.lastName %> </h1>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<!-- <li>Email: <%= user.email %></li>
+			<li>Year: <%= user.year %></li>
+			<li>Student ID: <%= user.studentID %></li> -->
+		</div>
+		<div class="col-lg-12">
+            <ul id="myTab" style="margin-bottom: 20px;" class="nav nav-tabs nav-justified">
+                <li class="active"><a href="#service-one" data-toggle="tab" aria-expanded="true"><i class="fa fa-briefcase"></i> DECA</a></li>
+				<li class=""><a href="#service-two" data-toggle="tab" aria-expanded="false"><i class="fa fa-briefcase"></i> FBLA</a></li>
+				<li class=""><a href="#service-three" data-toggle="tab" aria-expanded="false"><i class="fa fa-user"></i> Info</a></li>
+				<% if (user.isAdmin) { %><li class=""><a href="admin" ><i class="fa fa-lock"></i> Admin Panel</a></li> <% } %>
+            </ul>
+
+            <div id="myTabContent" class="tab-content">
+                <div class="tab-pane fade active in" id="service-one">
+					<div class="col-md-12">
+			            <div class="panel panel-default">
+			                <div class="panel-heading">
+								<% if (user.DECA_regionalsChecks == null || user.DECA_regionalsForms == null || user.DECA_registrationPayment == null || user.DECA_regionalsRegistered == null){
+									%>
+									<h4 style="font-size: 20px; color:red"><i class="fa fa-times"></i> DECA Signups</h4>
+									<%
+								}	else{
+									%>
+									<h4 style="font-size: 20px; color:green"><i class="fa fa-check"></i> DECA Signups</h4>
+									<%
+								}
+								%>
+			                </div>
+			                <div class="panel-body">
+								<% if (user.DECA_registrationPayment == null){ %>
+								    <p style="color:red;"><b>DECA Registration Payment: Unsubmitted</b></p>
+								    <%
+								}	else{
+								    %>
+								    <p style="color:green"><b>DECA Registration Payment: Submitted</b></p>
+								    <%
+								}
+								%>
+								<% if (user.DECA_regionalsRegistered == null){
+								    %>
+								    <p style="color:red;"><b>DECA Regionals Registration: Unsubmitted</b></p>
+								    <%
+								}	else{
+								    %>
+								    <p style="color:green"><b>DECA Regionals Registration: Submitted</b></p>
+								    <%
+								}
+								%>
+								<% if (user.DECA_regionalsChecks == null){
+								    %>
+								    <p style="color:red;"><b>DECA Regionals Checks: Unsubmitted</b></p>
+								    <%
+								}	else{
+								    %>
+								    <p style="color:green"><b>DECA Regionals Checks: Submitted</b></p>
+								    <%
+								}
+								%>
+								<% if (user.DECA_regionalsForms == null){
+								    %>
+								    <p style="color:red;"><b>DECA Regionals Forms: Unsubmitted</b></p>
+								    <%
+								}	else{
+								    %>
+								    <p style="color:green"><b>DECA Regionals Forms: Submitted</b></p>
+								    <%
+								}
+								%>
+								<form action="/setDECARegionals" method="post">
+								<div class="form-group">
+								    <label>Roleplay</label>
+								        <select name="DECA_regionalsRoleplay" class="form-control" id="grade" selected=<%= user.DECA_regionalsRoleplay %>>
+								            <%
+								                var options = [
+								                    "NONE SELECTED",
+								                    "PBM Principles of Business Management and Administration",
+								                    "PFN Principles of Finance",
+								                    "PHT Principles of Hospitality and Tourism",
+								                    "PMK Principles of Marketing",
+								                    "BLTDM Business Law and Ethics Team Decision Making",
+								                    "BTDM Buying and Merchandising Team Decision Making",
+								                    "FTDM Financial Services Team Decision Making",
+								                    "HTDM Hospitality Services Team Decision Making",
+								                    "MTDM Marketing Communications Team Decision Making",
+								                    "STDM Sports and Entertainment Marketing Team Decision Making",
+								                    "TTDM Travel and Tourism Marketing Team Decision Making",
+								                    "ACT Accounting Applications",
+								                    "AAM Apparel and Accessories Marketing Series",
+								                    "ASM Automotive Services Marketing Series",
+								                    "BFS Business Finance Series",
+								                    "BSM Business Services Marketing Series",
+								                    "FMS Food Marketing Series",
+								                    "HLM Hotel and Lodging Management Series",
+								                    "HRM Human Resource Management Series",
+								                    "MMS Marketing Management Series",
+								                    "QSRM Quick Serve Restaurant Management Series",
+								                    "RFSM Restaurant and Food Service Management",
+								                    "RMS Retail Merchandising Series",
+								                    "SEM Sports and Entertainment Marketing Series",
+								                    "PFL Personal Financial Literacy"
+								                ]
+								                for(var i = 0; i < options.length; i++) { %>
+								                    <option <% if (user.DECA_regionalsRoleplay == options[i]) { %>selected<% } %> >  <%= options[i] %>  </option>
+								                <% } %>
+								        </select>
+
+								        <label>Roleplay Partner</label>
+								        <input type="text" class="form-control" name="DECA_roleplayPartner" value="<%= user.DECA_roleplayPartner %>">
+								        <label>Written</label>
+								        <select name="DECA_regionalsWritten" class="form-control" id="grade" selected=<%= user.DECA_regionalsWritten %>>
+								            <%
+								                var options = [
+								                    "NONE SELECTED",
+								                    "BOR Business Services Operations Research",
+								                    "BMOR Buying and Merchandising Operations Research",
+								                    "FOR Finance Operations",
+								                    "HTOR Hospitality and Tourism Operations Research",
+								                    "SEOR Sports and Entertainment Marketing Operations Research",
+								                    "EIP Innovation Plan",
+								                    "EIB Independent Business Plan",
+								                    "ESB Start-Up Business Plan",
+								                    "EBG Business Growth Plan",
+								                    "IBP International Business Plan",
+								                    "ADC Advertising Campaign Event",
+								                    "FMP Fashion Merchandising Promotion Plan",
+								                    "SEPP Sports and Entertainment Promotion Plan",
+								                    "FCE Financial Consulting Event",
+								                    "HTPS Hospitality and Tourism Professional Selling",
+								                    "PSE Professional Selling"
+
+								                ]
+								                for(var i = 0; i < options.length; i++) { %>
+								                    <option <% if (user.DECA_regionalsWritten == options[i]) { %>selected<% } %> >  <%= options[i] %>  </option>
+								                <% }
+								            %>
+								        </select>
+
+								            <label>Written Partner 1</label>
+								            <input type="text" class="form-control" name="DECA_writtenPartner1"  value="<%= user.DECA_writtenPartner1 %>" >
+								            <label>Written Partner 2</label>
+								            <input type="text" class="form-control" name="DECA_writtenPartner2"  value="<%= user.DECA_writtenPartner2 %>" >
+								    </div>
+
+								    <% if(user.DECA_regionalsRegistered == 1){%>
+										<button  style="margin-right: 5px;" type="submit" name="submitbutton" class="btn btn-wide" value="submit">Update</button>
+										<input type="submit" id="deca-submit-form" name="submitbutton" class="hidden" value="cancel"/>
+										<a data-toggle="modal" data-target="#DECAcancel"><button type="button" class="btn btn-wide">Cancel Signups</button></a>
+								        <%} else { %>
+										<button type="submit" name="submitbutton" class="btn btn-wide" value="submit">Submit</button>
+								        <%}%>
+								</form>
+			                </div>
+			            </div>
+			        </div>
+				</div>
+                <div class="tab-pane fade" id="service-two">
+					<div class="col-md-12">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<% if (user.FBLA_regionalsChecks == null || user.FBLA_regionalsForms == null || user.FBLA_registrationPayment == null || user.FBLA_regionalsRegistered == null){
+									%>
+									<h4 style="font-size: 20px; color:red"><i class="fa fa-times"></i> FBLA Signups</h4>
+									<%
+								}	else{
+									%>
+									<h4 style="font-size: 20px; color:green"><i class="fa fa-check"></i> FBLA Signups</h4>
+									<%
+								}
+								%>
+							</div>
+							<div class="panel-body">
+								<% if (user.FBLA_registrationPayment == null){ %>
+									<p style="color:red;"><b>FBLA Registration Payment: Unsubmitted</b></p>
+									<%
+								}	else{
+									%>
+									<p style="color:green"><b>FBLA Registration Payment: Submitted</b></p>
+									<%
+								}
+								%>
+								<% if (user.FBLA_regionalsRegistered == null){
+									%>
+									<p style="color:red;"><b>FBLA Regionals Registration: Unsubmitted</b></p>
+									<%
+								}	else{
+									%>
+									<p style="color:green"><b>FBLA Regionals Registration: Submitted</b></p>
+									<%
+								}
+								%>
+								<% if (user.FBLA_regionalsChecks == null){
+									%>
+									<p style="color:red;"><b>FBLA Regionals Checks: Unsubmitted</b></p>
+									<%
+								}	else{
+									%>
+									<p style="color:green"><b>FBLA Regionals Checks: Submitted</b></p>
+									<%
+								}
+								%>
+								<% if (user.FBLA_regionalsForms == null){
+									%>
+									<p style="color:red;"><b>FBLA Regionals Forms: Unsubmitted</b></p>
+									<%
+								}	else{
+									%>
+									<p style="color:green"><b>FBLA Regionals Forms: Submitted</b></p>
+									<%
+								}
+								%>
+								<form action="/setFBLARegionals" method="post">
+									<div class="form-group">
+									    <label>Section Level Event</label>
+									        <select name="FBLA_regionalsEvent" class="form-control" id="grade" selected=<%= user.FBLA_regionalsEvent %>>
+									            <%
+									                var options = [
+														"NONE SELECTED",
+														"Accounting",
+														"Accounting",
+														"Agribusiness",
+														"Business Calculations",
+														"Business Communication",
+														"Business Law",
+														"Computer Applications",
+														"Computer Problem Solving",
+														"Creed",
+														"Cyber Security",
+														"Database Design & Applications",
+														"Economics",
+														"Entrepreneurship",
+														"FBLA Principles and Procedures",
+														"Future Business Leader",
+														"Global Business",
+														"Health Care Administration",
+														"Hospitality Management",
+														"Impromptu Speaking",
+														"Insurance & Risk Management",
+														"Introduction to Business",
+														"Introduction to Business Communication",
+														"Introduction to Business Procedures",
+														"Introduction to Financial Math",
+														"Introduction to Information Technology",
+														"Job Interview",
+														"Management Decision Making",
+														"Marketing",
+														"Parliamentary Procedure",
+														"Personal Finance",
+														"Public Speaking",
+														"Public Speaking",
+														"Sales Presentation",
+														"Securities & Investments",
+														"Sports & Entertainment Management",
+														"Spreadsheet Applications",
+														"Word Processing"]
+									                for(var i = 0; i < options.length; i++) { %>
+									                    <option <% if (user.FBLA_regionalsEvent == options[i]) { %>selected<% } %> >  <%= options[i] %>  </option>
+									                <% } %>
+									        </select>
+
+									        <label>Event Partner 1 (If Applicable)</label>
+									        <input type="text" class="form-control" name="FBLA_eventPartner1" value="<%= user.FBLA_eventPartner1 %>">
+											<label>Event Partner 2 (If Applicable)</label>
+									        <input type="text" class="form-control" name="FBLA_eventPartner2" value="<%= user.FBLA_eventPartner2 %>">
+											<label>Event Partner 3 (If Applicable)</label>
+									        <input type="text" class="form-control" name="FBLA_eventPartner3" value="<%= user.FBLA_eventPartner3 %>">
+											<label>Event Partner 4 (If Applicable)</label>
+									        <input type="text" class="form-control" name="FBLA_eventPartner4" value="<%= user.FBLA_eventPartner4 %>">
+										</div>
+										<div class="form-group">
+										    <label>State Level Event</label>
+										        <select name="FBLA_stateEvent" class="form-control" id="grade" selected=<%= user.FBLA_stateEvent %>>
+										            <%
+										                var options = [
+															"NONE SELECTED",
+															"3D Animation",
+															"Accounting",
+															"Accounting",
+															"Agribusiness",
+															"American Enterprise Project",
+															"Banking & Financial Systems",
+															"Business Calculations",
+															"Business Communication",
+															"Business Ethics",
+															"Business Financial Plan ",
+															"Business Law",
+															"Business Plan ",
+															"Client Service",
+															"Community Service Project",
+															"Computer Applications",
+															"Computer Game & Simulation Programming ",
+															"Computer Problem Solving",
+															"Creed",
+															"Cyber Security",
+															"Database Design & Applications",
+															"Desktop Application Programming",
+															"Digital Video Production ",
+															"E-business ",
+															"Economics",
+															"Electronic Career Portfolio",
+															"Emerging Business Issues",
+															"Entrepreneurship",
+															"FBLA Principles and Procedures",
+															"Future Business Leader",
+															"Global Business",
+															"Graphic Design ",
+															"Health Care Administration",
+															"Help Desk",
+															"Hospitality Management",
+															"Impromptu Speaking",
+															"Insurance & Risk Management",
+															"Introduction to Business",
+															"Introduction to Business Communication",
+															"Introduction to Business Presentation",
+															"Introduction to Business Procedures",
+															"Introduction to Financial Math",
+															"Introduction to Information Technology",
+															"Introduction to Parliamentary Procedure",
+															"Job Interview",
+															"Local Chapter Annual Business Report",
+															"Management Decision Making",
+															"Management Information Systems",
+															"Marketing",
+															"Mobile Application Development",
+															"Network Design",
+															"Networking Concepts",
+															"Parliamentary Procedure",
+															"Partnership With Business Project",
+															"Personal Finance",
+															"Public Service Announcement",
+															"Public Speaking",
+															"Public Speaking",
+															"Publication Design",
+															"Sales Presentation",
+															"Securities & Investments",
+															"Social Media Campaign",
+															"Sports & Entertainment Management",
+															"Spreadsheet Applications",
+															"Website Design",
+															"Word Processing"]
+										                for(var i = 0; i < options.length; i++) { %>
+										                    <option <% if (user.FBLA_stateEvent == options[i]) { %>selected<% } %> >  <%= options[i] %>  </option>
+										                <% } %>
+										        </select>
+
+										        <label>Event Partner 1 (If Applicable)</label>
+										        <input type="text" class="form-control" name="FBLA_stateEventPartner1" value="<%= user.FBLA_stateEventPartner1 %>">
+												<label>Event Partner 2 (If Applicable)</label>
+										        <input type="text" class="form-control" name="FBLA_stateEventPartner2" value="<%= user.FBLA_stateEventPartner2 %>">
+												<label>Event Partner 3 (If Applicable)</label>
+										        <input type="text" class="form-control" name="FBLA_stateEventPartner3" value="<%= user.FBLA_stateEventPartner3 %>">
+												<label>Event Partner 4 (If Applicable)</label>
+										        <input type="text" class="form-control" name="FBLA_stateEventPartner4" value="<%= user.FBLA_stateEventPartner4 %>">
+											</div>
+
+								    <% if(user.FBLA_regionalsRegistered == 1){%>
+								        <button style="margin-right: 5px;" name="submitbutton" type="submit" class="btn btn-wide" value="submit">Update</button>
+										<input type="submit" id="fbla-submit-form" name="submitbutton" class="hidden" value="cancel"/>
+										<a data-toggle="modal" data-target="#FBLAcancel"><button type="button" class="btn btn-wide">Cancel Signups</button></a>
+								        <%} else { %>
+								        <button type="submit" name="submitbutton" class="btn btn-wide" value="submit">Submit</button>
+								        <%}%>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane fade" id="service-three">
+					<div class="col-md-12">
+			            <div class="panel panel-default">
+			                <div class="panel-heading">
+								<h4 style="font-size: 20px"><i class="fa fa-user"></i> Profile Information</h4>
+			                </div>
+			                <div class="panel-body">
+								<form action="/setinfo" method="post">
+									<div class="form-group">
+
+									    <label>First Name</label>
+									    <input type="text" class="form-control" name="firstName" value="<%= user.firstName %>">
+									    <label>Last Name</label>
+									    <input type="text" class="form-control" name="lastName" value="<%= user.lastName %>">
+									    <label>Grade</label>
+									    <select name="grade" class="form-control" id="grade" selected=<%= user.year %>>
+									        <%
+									            var options = ["Freshman", "Sophomore", "Junior", "Senior"]
+									            for(var i = 0; i < options.length; i++) { %>
+									                <option <% if (user.year == options[i]) { %>selected<% } %> >  <%= options[i] %>  </option>
+									            <% }
+									        %>
+									    </select>
+										<label for="phoneNumber">Phone Number</label>
+										<input type="tel" class="form-control" name="phoneNumber" value="<%= user.phoneNumber %>">
+										<label>Birthday</label>
+									    <input type="date" class="form-control" name="birthday" value="<%= user.birthday %>">
+									    <label>Student ID</label>
+									    <input type="text" class="form-control" name="studentID" value="<%= user.studentID %>">
+									    <label>Parent/Guardian 1 Email</label>
+									    <input type="text" class="form-control" name="parent1email" value="<%= user.parent1email %>">
+									    <label>Parent/Guardian 2 Email</label>
+									    <input type="text" class="form-control" name="parent2email" value="<%= user.parent2email %>">
+									</div>
+								<button type="submit" name="submitbutton" class="btn btn-wide">Update</button>
+								</form>
+			                </div>
+			            </div>
+			        </div>
+				</div>
+            </div>
+        </div>
+	</div>
+
+	<div class="modal fade" id="DECAcancel" tabindex="-1" role="dialog" aria-labelledby="contactLabel" aria-hidden="true">
+	    <div style="margin: 200px auto;" class="modal-dialog">
+	        <div class="modal-content">
+	            <div class="modal-header">
+	                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+	                <h3 class="modal-title" id="contactLabel">Are you sure?</h3>
+	            </div>
+	            <div class="modal-body">
+					Are you sure you want to cancel signups?
+	            </div>
+	            <div class="confirm-modal-footer">
+					<label style="margin-top: 0px; padding-top: 16px;" for="deca-submit-form" role="button" class="btn btn-default" tabindex="0">YES</label>
+					<button type="button" class="btn btn-default" data-dismiss="modal">NO</button>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+
+	<div class="modal fade" id="FBLAcancel" tabindex="-1" role="dialog" aria-labelledby="contactLabel" aria-hidden="true">
+	    <div style="margin: 200px auto;" class="modal-dialog">
+	        <div class="modal-content">
+	            <div class="modal-header">
+	                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+	                <h3 class="modal-title" id="contactLabel">Are you sure?</h3>
+	            </div>
+	            <div class="modal-body">
+	                Are you sure you want to cancel signups?
+	            </div>
+	            <div class="confirm-modal-footer">
+					<label style="margin-top: 0px; padding-top: 16px;" for="fbla-submit-form" role="button" class="btn btn-default" tabindex="0">YES</label>
+					<button type="button" class="btn btn-default" data-dismiss="modal">NO</button>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+
+	<!-- Footer -->
+	<%- include('partials/footer') %>
+	<%- include('partials/contact') %>
+
+	<!-- jQuery -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.js"></script>
+
+	<!-- Bootstrap Core JavaScript -->
+	<script src="javascripts/bootstrap.min.js"></script>
+
+	<!-- Custom JavaScript -->
+	<script src="javascripts/main.js"></script>
+	<!-- <script src="res/js/nav.js"></script> -->
+
+
+
+
+</body></html>
