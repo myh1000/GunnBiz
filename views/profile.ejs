@@ -107,6 +107,7 @@
                 <li class="active"><a href="#service-one" data-toggle="tab" aria-expanded="true"><i class="fa fa-briefcase"></i> DECA</a></li>
 				<li class=""><a href="#service-two" data-toggle="tab" aria-expanded="false"><i class="fa fa-briefcase"></i> FBLA</a></li>
 				<li class=""><a href="#service-three" data-toggle="tab" aria-expanded="false"><i class="fa fa-user"></i> Info</a></li>
+				<li class=""><a href="#service-four" data-toggle="tab" aria-expanded="false"><i class="fa fa-user"></i> Practice Materials </a></li>
 				<% if (user.isAdmin) { %><li class=""><a href="admin" ><i class="fa fa-lock"></i> Admin Panel</a></li> <% } %>
             </ul>
 
@@ -124,16 +125,6 @@
 								}	else{
 								    %>
 								    <p style="color:green"><b>DECA Registration Payment: Submitted</b></p>
-								    <%
-								}
-								%>
-								<% if (user.DECA_regionalsRegistered == null){
-								    %>
-								    <p style="color:red;"><b>DECA Regionals Registration: Unsubmitted</b></p>
-								    <%
-								}	else{
-								    %>
-								    <p style="color:green"><b>DECA Regionals Registration: Submitted</b></p>
 								    <%
 								}
 								%>
@@ -175,16 +166,6 @@
 								}	else{
 									%>
 									<p style="color:green"><b>FBLA Registration Payment: Submitted</b></p>
-									<%
-								}
-								%>
-								<% if (user.FBLA_regionalsRegistered == null){
-									%>
-									<p style="color:red;"><b>FBLA Regionals Registration: Unsubmitted</b></p>
-									<%
-								}	else{
-									%>
-									<p style="color:green"><b>FBLA Regionals Registration: Submitted</b></p>
 									<%
 								}
 								%>
@@ -249,6 +230,18 @@
 									</div>
 								<button type="submit" name="submitbutton" class="btn btn-wide">Update</button>
 								</form>
+			                </div>
+			            </div>
+			        </div>
+				</div>
+				<div class="tab-pane fade" id="service-four">
+					<div class="col-md-12">
+			            <div class="panel panel-default">
+			                <div class="panel-heading">
+								<h4 style="font-size: 20px"><i class="fa fa-user"></i> Practice Materials</h4>
+			                </div>
+			                <div class="panel-body">
+								hey its me
 			                </div>
 			            </div>
 			        </div>
