@@ -5,5 +5,5 @@
 // document.querySelector(".blue-three div:nth-child(3)").style.height = h + "px";
 // Activates Carousel
 $('.carousel').carousel({
-    interval: 2000 //changes the speed
+    interval: 2500 //changes the speed
 })
