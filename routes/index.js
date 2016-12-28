@@ -134,42 +134,43 @@ module.exports = function(app, passport){
 	// 		res.redirect('/forgot');
 	// 	});
 	// });
-	// app.get('/reset/:token', function(req, res) {
-	// 	User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
-	// 		if (!user) {
-	// 			req.flash('error', 'Password reset token is invalid or has expired.');
-	// 			return res.redirect('/forgot');
-	// 		}
-	// 		res.render('reset', {
-	// 			user: req.user,
-	// 			title: 'Gunn Business - Reset Password'
-	// 		});
-	// 	});
-	// });
-	// app.post('/reset/:token', function(req, res) {
-	// 	async.waterfall([
-	// 		function(done) {
-	// 			User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
-	// 			if (!user) {
-	// 			  req.flash('error', 'Password reset token is invalid or has expired.');
-	// 			  return res.redirect('back');
-	// 			}
-	//
-	// 			user.password = bCrypt.hashSync(req.body.password, bCrypt.genSaltSync(10), null);
-	// 			user.resetPasswordToken = undefined;
-	// 			user.resetPasswordExpires = undefined;
-	//
-	// 			user.save(function(err) {
-	// 				req.logIn(user, function(err) {
-	// 				done(err, user);
-	// 				});
-	// 			});
-	// 		});
-	// 	}
-	// 	], function(err) {
-	// 	res.redirect('/');
-	// 	});
-	// });
+	app.get('/reset/:token', function(req, res) {
+		User.findOne({resetPasswordToken:req.params.token}, function(err, user) {
+			if (!user) {
+				req.flash('error', 'Password reset token is invalid or has expired.');
+				console.log(req.params.token);
+				return res.redirect('/login');
+			}
+			res.render('reset', {
+				user: req.user,
+				title: 'Gunn Business - Reset Password'
+			});
+		});
+	});
+	app.post('/reset/:token', function(req, res) {
+		async.waterfall([
+			function(done) {
+				User.findOne({resetPasswordToken: req.params.token}, function(err, user) {
+				if (!user) {
+				  req.flash('error', 'Password reset token is invalid or has expired.');
+				  return res.redirect('back');
+				}
+
+				user.password = bCrypt.hashSync(req.body.password, bCrypt.genSaltSync(10), null);
+				user.resetPasswordToken = undefined;
+				user.resetPasswordExpires = undefined;
+
+				user.save(function(err) {
+					req.logIn(user, function(err) {
+					done(err, user);
+					});
+				});
+			});
+		}
+		], function(err) {
+		res.redirect('/profile');
+		});
+	});
 	/* GET Profile Page */
 	app.get('/profile', isAuthenticated, function(req, res){
 		res.render('profile', { title: 'Gunn Business - Profile', user: req.user, message: req.flash('message')});
