@@ -1,7 +1,7 @@
 # Gunn Business Website
 website and server for Gunn Business Club
 
-gunnbusiness.com
+http://gunnbusiness.com
 
 ## setup
 ```
