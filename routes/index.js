@@ -42,11 +42,19 @@ module.exports = function(app, passport){
     app.get('/events', function(req, res, next) {
       res.render('events', { title: 'Gunn Business - Events' });
     });
+	app.get('/zohoverify/verifyforzoho.html', function(req, res, next) {
+      res.render('verifyforzoho');
+    });
 	/* GET New User page. */
 	app.get('/login', function(req, res) {
 		if(req.isAuthenticated(req, res)) {
             res.redirect('/profile');
         } else {
+			// crypto.randomBytes(20, function(err, buf) {
+			// 	var token = buf.toString('hex');
+			// 	console.log(token);
+			// 	console.log(Date.now() + 172800000);
+			//   });
 			res.render('login', { title: 'Gunn Business - Login', message: req.flash('message')});
 		}
 	});
