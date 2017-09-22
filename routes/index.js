@@ -22,7 +22,7 @@ module.exports = function(app, passport){
       res.render('deca', { title: 'DECA - Gunn Business' });
     });
 	app.get('/fbla', function(req, res, next) {
-      res.render('ae', { title: 'FBLA - Gunn Business' });
+      res.render('fbla', { title: 'FBLA - Gunn Business' });
     });
 	// app.get('/pb', function(req, res, next) {
     //   res.render('pb', { title: 'Partnership with Business - Gunn Business' });
