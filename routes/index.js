@@ -13,38 +13,38 @@ module.exports = function(app, passport){
 
     /* GET home page. */
     app.get('/', function(req, res, next) {
-      res.render('home', { title: 'Gunn Business - Home' });
+      res.render('home', { title: 'Home - Gunn Business' });
     });
 	app.get('/news', function(req, res, next) {
-      res.render('news', { title: 'Gunn Business - News' });
+      res.render('news', { title: 'News - Gunn Business' });
     });
-	app.get('/projects', function(req, res, next) {
-      res.render('projects', { title: 'Gunn Business - Projects' });
+	app.get('/deca', function(req, res, next) {
+      res.render('deca', { title: 'DECA - Gunn Business' });
     });
-	app.get('/ae', function(req, res, next) {
-      res.render('ae', { title: 'Gunn Business - American Enterprise' });
+	app.get('/fbla', function(req, res, next) {
+      res.render('ae', { title: 'FBLA - Gunn Business' });
     });
-	app.get('/pb', function(req, res, next) {
-      res.render('pb', { title: 'Gunn Business - Partnership with Business' });
-    });
-	app.get('/cs', function(req, res, next) {
-      res.render('cs', { title: 'Gunn Business - Community Service' });
-    });
+	// app.get('/pb', function(req, res, next) {
+    //   res.render('pb', { title: 'Partnership with Business - Gunn Business' });
+    // });
+	// app.get('/cs', function(req, res, next) {
+    //   res.render('cs', { title: 'Community Service - Gunn Business' });
+    // });
     /* GET About page. */
     app.get('/about', function(req, res, next) {
-      res.render('about', { title: 'Gunn Business - About' });
+      res.render('about', { title: 'About - Gunn Business' });
     });
-    /* GET index page. */
-    app.get('/index', function(req, res, next) {
-      res.render('home', { title: 'Gunn Business - Home' });
-    });
+    // /* GET index page. */
+    // app.get('/index', function(req, res, next) {
+    //   res.render('home', { title: 'Home - Gunn Business' });
+    // });
     /* GET events page. */
     app.get('/events', function(req, res, next) {
-      res.render('events', { title: 'Gunn Business - Events' });
+      res.render('events', { title: 'Events - Gunn Business' });
     });
-	app.get('/zohoverify/verifyforzoho.html', function(req, res, next) {
-      res.render('verifyforzoho');
-    });
+	// app.get('/zohoverify/verifyforzoho.html', function(req, res, next) {
+    //   res.render('verifyforzoho');
+    // });
 	/* GET New User page. */
 	app.get('/login', function(req, res) {
 		if(req.isAuthenticated(req, res)) {
@@ -55,7 +55,7 @@ module.exports = function(app, passport){
 			// 	console.log(token);
 			// 	console.log(Date.now() + 172800000);
 			//   });
-			res.render('login', { title: 'Gunn Business - Login', message: req.flash('message')});
+			res.render('login', { title: 'Login - Gunn Business', message: req.flash('message')});
 		}
 	});
 	app.post('/login', passport.authenticate('login', {
@@ -68,7 +68,7 @@ module.exports = function(app, passport){
 		if(req.isAuthenticated(req, res)) {
             res.redirect('/profile');
         } else {
-			res.render('registration', { title: 'Gunn Business - User Registration', message: req.flash('message')});
+			res.render('registration', { title: 'User Registration - Gunn Business', message: req.flash('message')});
 		}
 	});
     /* Handle Registration POST */
@@ -87,7 +87,7 @@ module.exports = function(app, passport){
     //     } else {
 	// 		res.render('forgot', {
 	// 			user: req.user,
-	// 			title: 'Gunn Business - Forgot Password',
+	// 			title: 'Forgot Password - Gunn Business',
 	// 			message: req.flash('message')
 	// 		});
 	// 	}
@@ -142,46 +142,46 @@ module.exports = function(app, passport){
 	// 		res.redirect('/forgot');
 	// 	});
 	// });
-	app.get('/reset/:token', function(req, res) {
-		User.findOne({resetPasswordToken:req.params.token}, function(err, user) {
-			if (!user) {
-				req.flash('error', 'Password reset token is invalid or has expired.');
-				console.log(req.params.token);
-				return res.redirect('/login');
-			}
-			res.render('reset', {
-				user: req.user,
-				title: 'Gunn Business - Reset Password'
-			});
-		});
-	});
-	app.post('/reset/:token', function(req, res) {
-		async.waterfall([
-			function(done) {
-				User.findOne({resetPasswordToken: req.params.token}, function(err, user) {
-				if (!user) {
-				  req.flash('error', 'Password reset token is invalid or has expired.');
-				  return res.redirect('back');
-				}
-
-				user.password = bCrypt.hashSync(req.body.password, bCrypt.genSaltSync(10), null);
-				user.resetPasswordToken = undefined;
-				user.resetPasswordExpires = undefined;
-
-				user.save(function(err) {
-					req.logIn(user, function(err) {
-					done(err, user);
-					});
-				});
-			});
-		}
-		], function(err) {
-		res.redirect('/profile');
-		});
-	});
+	// app.get('/reset/:token', function(req, res) {
+	// 	User.findOne({resetPasswordToken:req.params.token}, function(err, user) {
+	// 		if (!user) {
+	// 			req.flash('error', 'Password reset token is invalid or has expired.');
+	// 			console.log(req.params.token);
+	// 			return res.redirect('/login');
+	// 		}
+	// 		res.render('reset', {
+	// 			user: req.user,
+	// 			title: 'Reset Password - Gunn Business'
+	// 		});
+	// 	});
+	// });
+	// app.post('/reset/:token', function(req, res) {
+	// 	async.waterfall([
+	// 		function(done) {
+	// 			User.findOne({resetPasswordToken: req.params.token}, function(err, user) {
+	// 			if (!user) {
+	// 			  req.flash('error', 'Password reset token is invalid or has expired.');
+	// 			  return res.redirect('back');
+	// 			}
+	//
+	// 			user.password = bCrypt.hashSync(req.body.password, bCrypt.genSaltSync(10), null);
+	// 			user.resetPasswordToken = undefined;
+	// 			user.resetPasswordExpires = undefined;
+	//
+	// 			user.save(function(err) {
+	// 				req.logIn(user, function(err) {
+	// 				done(err, user);
+	// 				});
+	// 			});
+	// 		});
+	// 	}
+	// 	], function(err) {
+	// 	res.redirect('/profile');
+	// 	});
+	// });
 	/* GET Profile Page */
 	app.get('/profile', isAuthenticated, function(req, res){
-		res.render('profile', { title: 'Gunn Business - Profile', user: req.user, message: req.flash('message')});
+		res.render('profile', { title: 'Profile - Gunn Business', user: req.user, message: req.flash('message')});
 	});
 	app.post('/setinfo', function(req, res) {
 		req.user.firstName = req.body.firstName;
@@ -273,7 +273,7 @@ module.exports = function(app, passport){
 					userMap[user._id] = user;
 				});
 				console.log(userMap);
-				res.render('admin', { title: 'Gunn Business - Admin Panel', user: req.user, members: userMap, message: req.flash('message')});
+				res.render('admin', { title: 'Admin Panel - Gunn Business', user: req.user, members: userMap, message: req.flash('message')});
 			});
         } else {
 			res.redirect('/profile');
