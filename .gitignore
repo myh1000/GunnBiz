@@ -2,5 +2,3 @@ node_modules
 *.pug
 sample.ejs
 npm-debug.log
-keys.json
-db.js
