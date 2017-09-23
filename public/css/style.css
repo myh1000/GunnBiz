@@ -502,6 +502,23 @@ div.center {
     padding: 15px;
     border-top: 1px solid #e5e5e5;
 }
+.modal {
+  text-align: center;
+}
+@media screen and (min-width: 768px) {
+  .modal:before {
+    display: inline-block;
+    vertical-align: middle;
+    content: " ";
+    height: 100%;
+  }
+}
+
+.modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+}
 /* Footer Styles */
 footer.footer {
     background-color: #282a2c;
