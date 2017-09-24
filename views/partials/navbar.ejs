@@ -41,7 +41,7 @@
                     <% if (login) { %>
                         <a href="logout">Logout</a>
                     <% }else{ %>
-                        <a data-toggle="modal" data-target="#login">Login</a>
+                        <a  <% if (title === "Login - Gunn Business") { %> class="nav-bold" <% }else{ %> data-toggle="modal" data-target="#login" <% } %> >Login</a>
                     <% } %>
                 </li>
             </ul>

@@ -40,13 +40,17 @@
         	</div>
             <div class="row">
                 <form id="myform" method="post">
-                    <div class="form-group">
-                        <label for="password">New Password:</label>
-                        <input type="password" class="form-control" name="password">
-                    </div>
-                    <div style="padding-top: 15px;">
-                        <button type="submit" class="btn btn-default">Submit</button>
-                    </div>
+                    <% if (error.length > 0) { %>
+                		<p style="color:red;" id="message"><%= message %></p>
+                    <% }else{ %>
+                        <div class="form-group">
+                            <label for="password">New Password:</label>
+                            <input type="password" class="form-control" name="password">
+                        </div>
+                        <div style="padding-top: 5px;">
+                            <button type="submit" class="btn btn-default">Submit</button>
+                        </div>
+                    <% } %>
                 </form>
             </div>
 
@@ -65,25 +69,6 @@
 
     <!-- Custom JavaScript -->
     <script src="/javascripts/main.js"></script>
-    <!-- <script>
-        $(document).ready(function () {
-            $('#myform').on('submit', function(e) {
-                e.preventDefault();
-                $.ajax({
-                    url : $(this).attr('action') || window.location.pathname,
-                    type: "POST",
-                    data: $(this).serialize(),
-                    success: function (data) {
-                        $("#form_output").html(data);
-                    },
-                    error: function (jXHR, textStatus, errorThrown) {
-                        alert(errorThrown);
-                    }
-                });
-            });
-        });
-    </script> -->
-
 
 
 </body></html>

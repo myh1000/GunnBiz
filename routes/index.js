@@ -2,6 +2,8 @@ var User = require('../passport/profile');
 var async = require('async');
 var crypto = require('crypto');
 var bCrypt = require('bcrypt-nodejs');
+var nodemailer = require('nodemailer');
+var dbConfig = require('../db');
 
 module.exports = function(app, passport){
 
@@ -34,10 +36,6 @@ module.exports = function(app, passport){
     app.get('/about', function(req, res, next) {
       res.render('about', { title: 'About - Gunn Business' });
     });
-    // /* GET index page. */
-    // app.get('/index', function(req, res, next) {
-    //   res.render('home', { title: 'Home - Gunn Business' });
-    // });
     /* GET events page. */
     app.get('/events', function(req, res, next) {
       res.render('events', { title: 'Events - Gunn Business' });
@@ -81,104 +79,98 @@ module.exports = function(app, passport){
 		req.logout();
 		res.redirect('/');
 	});
-	// app.get('/forgot', function(req, res) {
-	// 	if(req.isAuthenticated(req, res)) {
-    //         res.redirect('/profile');
-    //     } else {
-	// 		res.render('forgot', {
-	// 			user: req.user,
-	// 			title: 'Forgot Password - Gunn Business',
-	// 			message: req.flash('message')
-	// 		});
-	// 	}
-	// });
-	// app.post('/forgot', function(req, res, next) {
-	// 	async.waterfall([
-	// 	    function(done) {
-	// 	      crypto.randomBytes(20, function(err, buf) {
-	// 	        var token = buf.toString('hex');
-	// 	        done(err, token);
-	// 	      });
-	// 	    },
-	// 	    function(token, done) {
-	// 	      User.findOne({ email: req.body.email }, function(err, user) {
-	// 	        if (!user) {
-	// 	          req.flash('error', 'No account with that email address exists.');
-	// 	          return res.redirect('/forgot');
-	// 	        }
-	//
-	// 	        user.resetPasswordToken = token;
-	// 	        user.resetPasswordExpires = Date.now() + 3600000; // 1 hour
-	// 			console.log(token);
-	// 	        user.save(function(err) {
-	// 	          done(err, token, user);
-	// 	        });
-	// 	      });
-	// 	    }
-	// 	    // function(token, user, done) {
-	// 		// 	var smtpTransport = nodemailer.createTransport('SMTP', {
-	// 		// 			service: 'SendGrid',
-	// 		// 			auth: {
-	// 		// 			user: '',
-	// 		// 			pass: ''
-	// 		// 		}
-	// 		// 	});
-	// 		// 	var mailOptions = {
-	// 		// 		to: user.email,
-	// 		// 		from: 'passwordreset@demo.com',
-	// 		// 		subject: 'Node.js Password Reset',
-	// 		// 		text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
-	// 		// 		'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
-	// 		// 		'http://' + req.headers.host + '/reset/' + token + '\n\n' +
-	// 		// 		'If you did not request this, please ignore this email and your password will remain unchanged.\n'
-	// 		// 	};
-	// 		// 	smtpTransport.sendMail(mailOptions, function(err) {
-	// 		// 		req.flash('info', 'An e-mail has been sent to ' + user.email + ' with further instructions.');
-	// 		// 		done(err, 'done');
-	// 		// 	});
-	// 		// }
-	// 	], function(err) {
-	// 		if (err) return next(err);
-	// 		res.redirect('/forgot');
-	// 	});
-	// });
-	// app.get('/reset/:token', function(req, res) {
-	// 	User.findOne({resetPasswordToken:req.params.token}, function(err, user) {
-	// 		if (!user) {
-	// 			req.flash('error', 'Password reset token is invalid or has expired.');
-	// 			console.log(req.params.token);
-	// 			return res.redirect('/login');
-	// 		}
-	// 		res.render('reset', {
-	// 			user: req.user,
-	// 			title: 'Reset Password - Gunn Business'
-	// 		});
-	// 	});
-	// });
-	// app.post('/reset/:token', function(req, res) {
-	// 	async.waterfall([
-	// 		function(done) {
-	// 			User.findOne({resetPasswordToken: req.params.token}, function(err, user) {
-	// 			if (!user) {
-	// 			  req.flash('error', 'Password reset token is invalid or has expired.');
-	// 			  return res.redirect('back');
-	// 			}
-	//
-	// 			user.password = bCrypt.hashSync(req.body.password, bCrypt.genSaltSync(10), null);
-	// 			user.resetPasswordToken = undefined;
-	// 			user.resetPasswordExpires = undefined;
-	//
-	// 			user.save(function(err) {
-	// 				req.logIn(user, function(err) {
-	// 				done(err, user);
-	// 				});
-	// 			});
-	// 		});
-	// 	}
-	// 	], function(err) {
-	// 	res.redirect('/profile');
-	// 	});
-	// });
+	app.get('/forgot', function(req, res) {
+		if(req.isAuthenticated(req, res)) {
+            res.redirect('/profile');
+        } else {
+			res.render('forgot', {
+				title: 'Forgot Password - Gunn Business',
+				message: req.flash('message'),
+				info: req.flash('info')
+			});
+		}
+	});
+	app.post('/forgot', function(req, res, next) {
+		async.waterfall([
+		    function(done) {
+		      crypto.randomBytes(20, function(err, buf) {
+		        var token = buf.toString('hex');
+		        done(err, token);
+		      });
+		    },
+		    function(token, done) {
+		      User.findOne({ email: req.body.email }, function(err, user) {
+		        if (!user) {
+		          req.flash('message', 'No account with that email address exists.');
+		          return res.redirect('/forgot');
+		        }
+
+		        user.resetPasswordToken = token;
+		        user.resetPasswordExpires = Date.now() + 3600000; // 1 hour
+				console.log("token:",token);
+		        user.save(function(err) {
+		          done(err, token, user);
+		        });
+		      });
+			},
+		    function(token, user, done) {
+				var smtpTransport = nodemailer.createTransport(dbConfig.smtp);
+				var mailOptions = {
+					to: user.email,
+					from: 'info@gunnbusiness.com',
+					subject: 'Gunn Business Password Reset',
+					text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
+					'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
+					'http://' + req.headers.host + '/reset/' + token + '\n\n' +
+					'If you did not request this, please ignore this email and your password will remain unchanged.\n'
+				};
+				smtpTransport.sendMail(mailOptions, function(err) {
+					req.flash('info', 'An e-mail has been sent to ' + user.email + ' with further instructions.');
+					done(err, 'done');
+				});
+			}
+		], function(err) {
+			if (err) return next(err);
+			res.redirect('/forgot');
+		});
+	});
+	app.get('/reset/:token', function(req, res) {
+		User.findOne({resetPasswordToken:req.params.token}, function(err, user) {
+			if (!user) {
+				req.flash('error', 'Password reset token is invalid or has expired.');
+				console.log(req.params.token);
+			}
+			res.render('reset', {
+				user: req.user,
+				title: 'Reset Password - Gunn Business',
+				message: req.flash('message')
+			});
+		});
+	});
+	app.post('/reset/:token', function(req, res) {
+		async.waterfall([
+			function(done) {
+				User.findOne({resetPasswordToken: req.params.token}, function(err, user) {
+				if (!user) {
+				  req.flash('error', 'Password reset token is invalid or has expired.');
+				  return res.redirect('back');
+				}
+
+				user.password = bCrypt.hashSync(req.body.password, bCrypt.genSaltSync(10), null);
+				user.resetPasswordToken = undefined;
+				user.resetPasswordExpires = undefined;
+
+				user.save(function(err) {
+					req.logIn(user, function(err) {
+					done(err, user);
+					});
+				});
+			});
+		}
+		], function(err) {
+		res.redirect('/profile');
+		});
+	});
 	/* GET Profile Page */
 	app.get('/profile', isAuthenticated, function(req, res){
 		res.render('profile', { title: 'Profile - Gunn Business', user: req.user, message: req.flash('message')});
@@ -186,6 +178,7 @@ module.exports = function(app, passport){
 	app.post('/setinfo', function(req, res) {
 		req.user.firstName = req.body.firstName;
 		req.user.lastName = req.body.lastName;
+		req.user.email = req.body.email;
 		req.user.phoneNumber = req.body.phoneNumber;
 		req.user.grade = req.body.grade;
 		req.user.birthday = req.body.birthday;
