@@ -111,6 +111,7 @@ module.exports = function(app, passport){
 		        user.save(function(err) {
 		          done(err, token, user);
 		        });
+				// req.flash('info', 'Please see a Gunn Business Officer for more the link to reset your password.');
 		      });
 			},
 		    function(token, user, done) {
@@ -125,10 +126,10 @@ module.exports = function(app, passport){
 					'http://' + req.headers.host + '/reset/' + token + '\n\n' +
 					'If you did not request this, please ignore this email and your password will remain unchanged.\n'
 				};
-				// smtpTransport.sendMail(mailOptions, function(err) {
-				// 	req.flash('info', 'An e-mail has been sent to ' + user.email + ' with further instructions.');
-				// 	done(err, 'done');
-				// });
+				smtpTransport.sendMail(mailOptions, function(err) {
+					req.flash('info', 'An e-mail has been sent to ' + user.email + ' with further instructions.');
+					done(err, 'done');
+				});
 			}
 		], function(err) {
 			if (err) return next(err);
@@ -138,7 +139,7 @@ module.exports = function(app, passport){
 	app.get('/reset/:token', function(req, res) {
 		User.findOne({resetPasswordToken:req.params.token}, function(err, user) {
 			if (!user) {
-				req.flash('error', 'Password reset token is invalid or has expired.');
+				req.flash('message', 'Password reset token is invalid or has expired.');
 				console.log(req.params.token);
 			}
 			res.render('reset', {
