@@ -154,7 +154,7 @@ module.exports = function(app, passport){
 			function(done) {
 				User.findOne({resetPasswordToken: req.params.token}, function(err, user) {
 				if (!user) {
-				  req.flash('error', 'Password reset token is invalid or has expired.');
+				  req.flash('message', 'Password reset token is invalid or has expired.');
 				  return res.redirect('back');
 				}
 
@@ -170,7 +170,7 @@ module.exports = function(app, passport){
 			});
 		}
 		], function(err) {
-		res.redirect('/profile');
+			res.redirect('/profile');
 		});
 	});
 	/* GET Profile Page */
@@ -283,7 +283,7 @@ module.exports = function(app, passport){
 						console.log(err)
 					}
 					console.log(email)
-					if (! user) {
+					if (!user) {
 						res.json('nope');
 						console.log('nope');
 					}
@@ -306,7 +306,47 @@ module.exports = function(app, passport){
 			res.redirect('/profile');
 		}
 	});
+	app.get('/user/:email', function(req, res) {
+		User.findOne({email:req.params.email}, function(err, user) {
+			if (!user) {
+				req.flash('message', 'User could not be found.');
+				console.log(req.params.email);
+			}
+			res.render('user', {
+				user: user,
+				title: 'Reset Password - Gunn Business',
+				message: req.flash('message')
+			});
+		});
+	});
+	app.post('/user/:email', function(req, res) {
+		async.waterfall([
+			function(done) {
+				User.findOne({email: req.params.email}, function(err, user) {
+				if (!user) {
+				  req.flash('message', 'User could not be found.');
+				  return res.redirect('back');
+				}
+				user.firstName = req.body.firstName;
+				user.lastName = req.body.lastName;
+				user.email = req.body.email;
+				user.phoneNumber = req.body.phoneNumber;
+				user.grade = req.body.grade;
+				user.birthday = req.body.birthday;
+				user.studentID = req.body.studentID;
+				user.parent1email = req.body.parent1email;
+				user.parent2email = req.body.parent2email;
 
+				user.save(function (err) {
+					if (err) return console.error(err);
+					done(err);
+				});
+			});
+		}
+		], function(err) {
+			res.redirect('/admin');
+		});
+	});
     // return app;
 }
 

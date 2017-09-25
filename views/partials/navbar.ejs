@@ -13,33 +13,33 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a <% if (title === "News - Gunn Business") { %> class="nav-bold" <% } %> href="news">News</a>
+                    <a <% if (title === "News - Gunn Business") { %> class="nav-bold" <% } %> href="/news">News</a>
                 </li>
                 <li class="dropdown">
-                    <a <% if (['DECA - Gunn Business', 'FBLA - Gunn Business', 'About - Gunn Business'].indexOf(title) >= 0) { %> class="nav-bold" <% } %> href="about" class="dropdown-toggle" data-toggle="dropdown">About <b class="caret"></b></a>
+                    <a <% if (['DECA - Gunn Business', 'FBLA - Gunn Business', 'About - Gunn Business'].indexOf(title) >= 0) { %> class="nav-bold" <% } %> href="/about" class="dropdown-toggle" data-toggle="dropdown">About <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a <% if (title === "DECA - Gunn Business") { %> class="nav-bold" <% } %> href="deca">DECA</a>
+                            <a <% if (title === "DECA - Gunn Business") { %> class="nav-bold" <% } %> href="/deca">DECA</a>
                         </li>
                         <li>
-                            <a <% if (title === "FBLA - Gunn Business") { %> class="nav-bold" <% } %> href="fbla">FBLA</a>
+                            <a <% if (title === "FBLA - Gunn Business") { %> class="nav-bold" <% } %> href="/fbla">FBLA</a>
                         </li>
                         <li>
-                            <a <% if (title === "About - Gunn Business") { %> class="nav-bold" <% } %> href="about">About and Officers</a>
+                            <a <% if (title === "About - Gunn Business") { %> class="nav-bold" <% } %> href="/about">About and Officers</a>
                         </li>
                     </ul>
                 </li>
                 <li>
-                    <a <% if (title === "Events - Gunn Business") { %> class="nav-bold" <% } %> href="events">Events</a>
+                    <a <% if (title === "Events - Gunn Business") { %> class="nav-bold" <% } %> href="/events">Events</a>
                 </li>
                 <% if (login) { %>
                     <li>
-                        <a <% if (title === "Profile - Gunn Business") { %> class="nav-bold" <% } %> href="profile">Profile</a>
+                        <a <% if (title === "Profile - Gunn Business") { %> class="nav-bold" <% } %> href="/profile">Profile</a>
                     </li>
                 <% } %>
                 <li>
                     <% if (login) { %>
-                        <a href="logout">Logout</a>
+                        <a href="/logout">Logout</a>
                     <% }else{ %>
                         <a  <% if (title === "Login - Gunn Business") { %> class="nav-bold" <% }else{ %> data-toggle="modal" data-target="#login" <% } %> >Login</a>
                     <% } %>

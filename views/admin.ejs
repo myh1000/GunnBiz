@@ -62,7 +62,7 @@
 							if (members.hasOwnProperty(key)) {
 								%>
 									<tr>
-										<td><%= members[key].firstName %> <%= members[key].lastName %></td>
+										<td><a href="/user/<%= members[key].email %>"><%= members[key].firstName %> <%= members[key].lastName %></a></td>
 										<td><% if (members[key].DECA_regionalsRegistered == null){
 											    %>
 											    <font style="color:red;">DECA,</font>
