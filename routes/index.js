@@ -153,22 +153,22 @@ module.exports = function(app, passport){
 		async.waterfall([
 			function(done) {
 				User.findOne({resetPasswordToken: req.params.token}, function(err, user) {
-				if (!user) {
-				  req.flash('message', 'Password reset token is invalid or has expired.');
-				  return res.redirect('back');
-				}
+					if (!user) {
+					  req.flash('message', 'Password reset token is invalid or has expired.');
+					  return res.redirect('back');
+					}
 
-				user.password = bCrypt.hashSync(req.body.password, bCrypt.genSaltSync(10), null);
-				user.resetPasswordToken = undefined;
-				user.resetPasswordExpires = undefined;
+					user.password = bCrypt.hashSync(req.body.password, bCrypt.genSaltSync(10), null);
+					user.resetPasswordToken = undefined;
+					user.resetPasswordExpires = undefined;
 
-				user.save(function(err) {
-					req.logIn(user, function(err) {
-					done(err, user);
+					user.save(function(err) {
+						req.logIn(user, function(err) {
+						done(err, user);
+						});
 					});
 				});
-			});
-		}
+			}
 		], function(err) {
 			res.redirect('/profile');
 		});
@@ -323,26 +323,26 @@ module.exports = function(app, passport){
 		async.waterfall([
 			function(done) {
 				User.findOne({email: req.params.email}, function(err, user) {
-				if (!user) {
-				  req.flash('message', 'User could not be found.');
-				  return res.redirect('back');
-				}
-				user.firstName = req.body.firstName;
-				user.lastName = req.body.lastName;
-				user.email = req.body.email;
-				user.phoneNumber = req.body.phoneNumber;
-				user.grade = req.body.grade;
-				user.birthday = req.body.birthday;
-				user.studentID = req.body.studentID;
-				user.parent1email = req.body.parent1email;
-				user.parent2email = req.body.parent2email;
+					if (!user) {
+					  req.flash('message', 'User could not be found.');
+					  return res.redirect('back');
+					}
+					user.firstName = req.body.firstName;
+					user.lastName = req.body.lastName;
+					user.email = req.body.email;
+					user.phoneNumber = req.body.phoneNumber;
+					user.grade = req.body.grade;
+					user.birthday = req.body.birthday;
+					user.studentID = req.body.studentID;
+					user.parent1email = req.body.parent1email;
+					user.parent2email = req.body.parent2email;
 
-				user.save(function (err) {
-					if (err) return console.error(err);
-					done(err);
+					user.save(function (err) {
+						if (err) return console.error(err);
+						done(err);
+					});
 				});
-			});
-		}
+			}
 		], function(err) {
 			res.redirect('/admin');
 		});
