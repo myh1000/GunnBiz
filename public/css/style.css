@@ -541,7 +541,7 @@ footer.footer {
     bottom: 0;
     width: 100%;
     margin: 36px 0 0 0;
-    text-align: center;
+    /*text-align: center;*/
 }
 ul.footer-links {
     padding: 50px 0;

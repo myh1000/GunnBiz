@@ -6,13 +6,25 @@
                 <h3 class="modal-title" id="contactLabel">Contact Gunn Business</h3>
             </div>
             <div class="modal-body">
-                <p>If you have any questions or concerns about Gunn Business, please email <a href="mailto:gunnbusiness.ghs@gmail.com">gunnbusiness.ghs@gmail.com</a>. We would love to answer your questions and talk to you.</p>
-                <li>Gunn Business Email: <a href="mailto:gunnbusiness.ghs@gmail.com">gunnbusiness.ghs@gmail.com</a></li>
-                <li>DECA Email: <a href="mailto:gunndeca.ghs@gmail.com">gunndeca.ghs@gmail.com</a></li>
-                <li>FBLA Email: <a href="mailto:fblagunn@gmail.com">fblagunn@gmail.com</a></li>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <p>Questions or Comments? Fill out this form and we’ll get back to you as soon as we can!</p>
+                Gunn Business Email: <a href="mailto:gunnbusiness.ghs@gmail.com">gunnbusiness.ghs@gmail.com</a></li>
+                <form id="myform" method="post" action="/contact" style="margin-bottom:0px">
+                    <div class="form-group" style="margin-bottom: 0px;">
+                        <label for="name">Name:</label>
+                        <input type="name" class="form-control" name="name" required autofocus>
+                    </div>
+                    <div class="form-group"style="margin-bottom: 0px;">
+                        <label for="email">Email:</label>
+                        <input type="email" class="form-control" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message:</label>
+                        <textarea type="message" class="form-control" name="message" required rows="3"></textarea>
+                    </div>
+                    <div>
+                        <button type="submit" class="btn btn-default">Submit</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

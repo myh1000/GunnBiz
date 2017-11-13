@@ -139,6 +139,27 @@ module.exports = function(app, passport){
 			res.redirect('/forgot');
 		});
 	});
+	app.post('/contact', function(req, res, next) {
+		async.waterfall([
+			function(done) {
+				var smtpTransport = nodemailer.createTransport(dbConfig.smtp);
+				// console.log("same");
+				console.log(req.body.name);
+				var mailOptions = {
+					to: 'info@gunnbusiness.com',
+					from: 'info@gunnbusiness.com',
+					subject: 'Message from ' + req.body.name,
+					text: 'Name: ' + req.body.name + '\n\nEmail: ' + req.body.email + '\n\nMessage: ' + req.body.message
+				};
+				smtpTransport.sendMail(mailOptions, function(err) {
+					done(err, 'done');
+				});
+			}
+		], function(err) {
+			if (err) return next(err);
+			res.redirect('/');
+		});
+	});
 	app.get('/reset/:token', function(req, res) {
 		User.findOne({resetPasswordToken:req.params.token}, function(err, user) {
 			if (!user) {
