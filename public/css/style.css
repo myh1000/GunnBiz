@@ -179,6 +179,12 @@ nav.navbar-noscroll ul.nav li a {
   font-size: 13px;
   text-transform: uppercase;
 }
+p.bio {
+  font-size: 20px
+}
+p.name {
+  font-size: 30px
+}
 nav.navbar-noscroll ul.nav li:first-of-type a {
   padding: 30px 19px 30px 0;
 }
@@ -191,6 +197,12 @@ nav.navbar-noscroll ul.nav li a:hover {
 }
 nav.navbar-noscroll .dropdown-menu {
     background-color: transparent;
+}
+
+.dropdown-menu-toggle:hover ul.dropdown-menu {
+
+    /** Show dropdown menu */
+    display: block;
 }
 nav.navbar-scroll {
     font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
