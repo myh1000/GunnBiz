@@ -46,7 +46,7 @@ module.exports = function(app, passport){
 	/* GET New User page. */
 	app.get('/login', function(req, res) {
 		if(req.isAuthenticated(req, res)) {
-            res.redirect('/profile');
+            res.redirect('/resources');
         } else {
 			// crypto.randomBytes(20, function(err, buf) {
 			// 	var token = buf.toString('hex');
@@ -57,21 +57,21 @@ module.exports = function(app, passport){
 		}
 	});
 	app.post('/login', passport.authenticate('login', {
-		successRedirect: '/profile',
+		successRedirect: '/resources',
 		failureRedirect: '/login',
 		failureFlash : true
 	}));
 	/* GET New User page. */
 	app.get('/registration', function(req, res) {
 		if(req.isAuthenticated(req, res)) {
-            res.redirect('/profile');
+            res.redirect('/resources');
         } else {
 			res.render('registration', { title: 'User Registration - Gunn Business', message: req.flash('message')});
 		}
 	});
     /* Handle Registration POST */
     app.post('/registration', passport.authenticate('signup', {
-		successRedirect: '/profile',
+		successRedirect: '/resources',
 		failureRedirect: '/registration',
 		failureFlash : true
 	}));
@@ -81,7 +81,7 @@ module.exports = function(app, passport){
 	});
 	app.get('/forgot', function(req, res) {
 		if(req.isAuthenticated(req, res)) {
-            res.redirect('/profile');
+            res.redirect('/resources');
         } else {
 			res.render('forgot', {
 				title: 'Forgot Password - Gunn Business',
@@ -170,12 +170,12 @@ module.exports = function(app, passport){
 				});
 			}
 		], function(err) {
-			res.redirect('/profile');
+			res.redirect('/resources');
 		});
 	});
 	/* GET Profile Page */
-	app.get('/profile', isAuthenticated, function(req, res){
-		res.render('profile', { title: 'Profile - Gunn Business', user: req.user, message: req.flash('message')});
+	app.get('/resources', isAuthenticated, function(req, res){
+		res.render('resources', { title: 'Resources - Gunn Business', user: req.user, message: req.flash('message')});
 	});
 	app.post('/setinfo', function(req, res) {
 		req.user.firstName = req.body.firstName;
@@ -190,7 +190,7 @@ module.exports = function(app, passport){
 		req.user.save(function (err, member) {
 			if (err) return console.error(err);
 		});
-		res.redirect('/profile');
+		res.redirect('/resources');
 	});
 	// app.post('/setDECARegionals', function(req, res)
 	// {
@@ -206,7 +206,7 @@ module.exports = function(app, passport){
 	// 			if (err) return console.error(err);
 	// 			console.log("saved");
 	// 		});
-	// 		res.redirect('/profile');
+	// 		res.redirect('/resources');
 	// 	}
 	// 	else {
 	// 		req.user.DECA_regionalsWritten = req.body.DECA_regionalsWritten;
@@ -220,7 +220,7 @@ module.exports = function(app, passport){
 	// 			if (err) return console.error(err);
 	// 			console.log("saved");
 	// 		});
-	// 		res.redirect('/profile');
+	// 		res.redirect('/resources');
 	// 	}
 	// });
 	// app.post('/setFBLARegionals', function(req, res)
@@ -237,7 +237,7 @@ module.exports = function(app, passport){
 	// 			if (err) return console.error(err);
 	// 			console.log("saved");
 	// 		});
-	// 		res.redirect('/profile');
+	// 		res.redirect('/resources');
 	// 	}
 	// 	else {
 	// 		req.user.FBLA_regionalsEvent = req.body.FBLA_regionalsEvent;
@@ -256,7 +256,7 @@ module.exports = function(app, passport){
 	// 			if (err) return console.error(err);
 	// 			console.log("saved");
 	// 		});
-	// 		res.redirect('/profile');
+	// 		res.redirect('/resources');
 	// 	}
 	// });
 	app.get('/admin', isAuthenticated, function(req, res){
@@ -271,7 +271,7 @@ module.exports = function(app, passport){
 				res.render('admin', { title: 'Admin Panel - Gunn Business', user: req.user, members: userMap, message: req.flash('message')});
 			});
         } else {
-			res.redirect('/profile');
+			res.redirect('/resources');
 		}
 	});
 	app.post('/admin', isAuthenticated, function(req, res){
@@ -303,7 +303,7 @@ module.exports = function(app, passport){
 			});
 		res.redirect('admin');
         } else {
-			res.redirect('/profile');
+			res.redirect('/resources');
 		}
 	});
 	app.get('/user/:email', function(req, res) {
