@@ -36,9 +36,12 @@ module.exports = function(app, passport){
     app.get('/about', function(req, res, next) {
       res.render('about', { title: 'About - Gunn Business' });
     });
+    app.get('/officers', function(req, res, next) {
+      res.render('officers', { title: 'Current Officers - Gunn Business' });
+    });
     /* GET events page. */
-    app.get('/events', function(req, res, next) {
-      res.render('events', { title: 'Events - Gunn Business' });
+    app.get('/competitions', function(req, res, next) {
+      res.render('competitions', { title: 'Competitions - Gunn Business' });
     });
 	// app.get('/zohoverify/verifyforzoho.html', function(req, res, next) {
     //   res.render('verifyforzoho');

@@ -15,9 +15,12 @@
                 <li>
                     <a <% if (title === "News - Gunn Business") { %> class="nav-bold" <% } %> href="/news">News</a>
                 </li>
-                <li class="dropdown">
-                    <a <% if (['DECA - Gunn Business', 'FBLA - Gunn Business', 'About - Gunn Business'].indexOf(title) >= 0) { %> class="nav-bold" <% } %> href="/about" class="dropdown-toggle" data-toggle="dropdown">About <b class="caret"></b></a>
+                <li class="dropdown dropdown-menu-toggle">
+                    <a <% if (['DECA - Gunn Business', 'FBLA - Gunn Business', 'About - Gunn Business', 'Current Officers - Gunn Business'].indexOf(title) >= 0) { %> class="nav-bold" <% } %> href="/about" class="dropdown-toggle" data-toggle="dropdown">About <b class="caret"></b></a>
                     <ul class="dropdown-menu">
+                    <li>
+                            <a <% if (title === "About - Gunn Business") { %> class="nav-bold" <% } %> href="/about">About</a>
+                        </li>
                         <li>
                             <a <% if (title === "DECA - Gunn Business") { %> class="nav-bold" <% } %> href="/deca">DECA</a>
                         </li>
@@ -25,12 +28,12 @@
                             <a <% if (title === "FBLA - Gunn Business") { %> class="nav-bold" <% } %> href="/fbla">FBLA</a>
                         </li>
                         <li>
-                            <a <% if (title === "About - Gunn Business") { %> class="nav-bold" <% } %> href="/about">About and Officers</a>
+                            <a <% if (title === "Current Officers - Gunn Business") { %> class="nav-bold" <% } %> href="/officers">Officers</a>
                         </li>
                     </ul>
                 </li>
                 <li>
-                    <a <% if (title === "Events - Gunn Business") { %> class="nav-bold" <% } %> href="/events">Events</a>
+                    <a <% if (title === "Competitions - Gunn Business") { %> class="nav-bold" <% } %> href="/competitions">Competitions</a>
                 </li>
                 <% if (login) { %>
                     <li>
