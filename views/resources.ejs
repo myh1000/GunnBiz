@@ -46,14 +46,32 @@
 		</div>
 		<div class="col-lg-12">
             <ul id="myTab" style="margin-bottom: 20px;" class="nav nav-tabs nav-justified">
-                <li class="active"><a href="#service-one" data-toggle="tab" aria-expanded="true"><i class="fa fa-briefcase"></i> DECA</a></li>
-				<li class=""><a href="#service-two" data-toggle="tab" aria-expanded="false"><i class="fa fa-briefcase"></i> FBLA</a></li>
-				<li class=""><a href="#service-three" data-toggle="tab" aria-expanded="false"><i class="fa fa-user"></i> Info</a></li>
+				<li class="active"><a href="#service-one" data-toggle="tab" aria-expanded="true"><i class="fa fa-briefcase"></i> Status</a></li>
+                <li class=""><a href="#service-two" data-toggle="tab" aria-expanded="false"><i class="fa fa-briefcase"></i> DECA</a></li>
+				<li class=""><a href="#service-three" data-toggle="tab" aria-expanded="false"><i class="fa fa-briefcase"></i> FBLA</a></li>
+				<li class=""><a href="#service-four" data-toggle="tab" aria-expanded="false"><i class="fa fa-user"></i> Profile</a></li>
 				<% if (user.isAdmin) { %><li class=""><a href="/admin" ><i class="fa fa-lock"></i> Admin Panel</a></li> <% } %>
             </ul>
 
             <div id="myTabContent" class="tab-content">
-                <div class="tab-pane fade active in" id="service-one">
+				<div class="tab-pane fade active in" id="service-one">
+					<div class="col-md-12">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 style="font-size: 20px;"><i class="fa fa-briefcase"></i> Status</h4>
+							</div>
+							<div class="panel-body">
+								<h1 style="font-size: 20px; line-height:5px; color: grey">DECA Events:</h1>
+								<h1 style="font-size: 20px; line-height:5px; color: grey">FBLA Events:</h1>
+								<h1 style="font-size: 20px; line-height:5px; color: grey">Teams:</h1>
+								<h1 style="font-size: 20px; line-height:5px; color: grey">Conferences:</h1>
+								<h1 style="font-size: 20px; line-height:5px; color: grey">Checks:</h1>
+								<h1 style="font-size: 20px; line-height:5px; color: grey">Forms:</h1>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane fade" id="service-two">
 					<div class="col-md-12">
 			            <div class="panel panel-default">
 			                <div class="panel-heading">
@@ -65,7 +83,7 @@
 			            </div>
 			        </div>
 				</div>
-                <div class="tab-pane fade" id="service-two">
+                <div class="tab-pane fade" id="service-three">
 					<div class="col-md-12">
 						<div class="panel panel-default">
 							<div class="panel-heading">
@@ -77,7 +95,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="tab-pane fade" id="service-three">
+				<div class="tab-pane fade" id="service-four">
 					<div class="col-md-12">
 			            <div class="panel panel-default">
 			                <div class="panel-heading">

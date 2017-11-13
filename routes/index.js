@@ -180,6 +180,9 @@ module.exports = function(app, passport){
 	app.get('/resources', isAuthenticated, function(req, res){
 		res.render('resources', { title: 'Resources - Gunn Business', user: req.user, message: req.flash('message')});
 	});
+	app.get('/resources/hi', isAuthenticated, function(req, res){
+		res.render('resources', { title: 'Resources - Gunn Business', user: req.user, message: req.flash('message')});
+	});
 	app.post('/setinfo', function(req, res) {
 		req.user.firstName = req.body.firstName;
 		req.user.lastName = req.body.lastName;

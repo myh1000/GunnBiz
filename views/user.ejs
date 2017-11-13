@@ -34,48 +34,145 @@
 	<%- include('partials/navbar') %>
 
 	<div class="container">
-		<div style="padding: 50px 0 5px 0">
+		<div style="padding: 50px 0 20px 0">
 			<h1 style="font-size: 35px;">User Info: <%= user.firstName %> <%= user.lastName %> </h1>
 		</div>
 	</div>
 	<div class="container">
-		<!-- <div class="row">
-			<li>Email: <%= user.email %></li>
+		<div class="row">
+			<!-- <li>Email: <%= user.email %></li>
 			<li>Year: <%= user.year %></li>
-			<li>Student ID: <%= user.studentID %></li>
-		</div> -->
-		<div>
-			<form method="post">
-				<div class="form-group">
-					<label>First Name</label>
-					<input type="text" class="form-control" name="firstName" value="<%= user.firstName %>">
-					<label>Last Name</label>
-					<input type="text" class="form-control" name="lastName" value="<%= user.lastName %>">
-					<label>Email</label>
-					<input type="text" class="form-control" name="email" value="<%= user.email %>">
-					<label>Grade</label>
-					<select name="grade" class="form-control" id="grade" selected=<%= user.year %>>
-						<%
-							var options = ["Freshman", "Sophomore", "Junior", "Senior"]
-							for(var i = 0; i < options.length; i++) { %>
-								<option <% if (user.year == options[i]) { %>selected<% } %> >  <%= options[i] %>  </option>
-							<% }
-						%>
-					</select>
-					<label for="phoneNumber">Phone Number</label>
-					<input type="tel" class="form-control" name="phoneNumber" value="<%= user.phoneNumber %>">
-					<label>Birthday</label>
-					<input type="date" class="form-control" name="birthday" value="<%= user.birthday %>">
-					<label>Student ID</label>
-					<input type="text" class="form-control" name="studentID" value="<%= user.studentID %>">
-					<label>Parent/Guardian 1 Email</label>
-					<input type="text" class="form-control" name="parent1email" value="<%= user.parent1email %>">
-					<label>Parent/Guardian 2 Email</label>
-					<input type="text" class="form-control" name="parent2email" value="<%= user.parent2email %>">
-				</div>
-			<button type="submit" name="submitbutton" class="btn btn-wide">Update</button>
-			</form>
+			<li>Student ID: <%= user.studentID %></li> -->
 		</div>
+		<div class="col-lg-12">
+            <ul id="myTab" style="margin-bottom: 20px;" class="nav nav-tabs nav-justified">
+				<li class="active"><a href="#service-one" data-toggle="tab" aria-expanded="true"><i class="fa fa-briefcase"></i> Status</a></li>
+				<li class=""><a href="#service-four" data-toggle="tab" aria-expanded="false"><i class="fa fa-user"></i> Profile</a></li>
+				<li class=""><a href="/admin" ><i class="fa fa-lock"></i> Admin Panel</a></li>
+            </ul>
+
+            <div id="myTabContent" class="tab-content">
+				<div class="tab-pane fade active in" id="service-one">
+					<div class="col-md-12">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 style="font-size: 20px;"><i class="fa fa-briefcase"></i> Status</h4>
+							</div>
+							<div class="panel-body">
+								<h1 style="font-size: 20px; line-height:5px; color: grey">DECA Events:</h1>
+								<h1 style="font-size: 20px; line-height:5px; color: grey">FBLA Events:</h1>
+								<h1 style="font-size: 20px; line-height:5px; color: grey">Teams:</h1>
+								<h1 style="font-size: 20px; line-height:5px; color: grey">Conferences:</h1>
+								<h1 style="font-size: 20px; line-height:5px; color: grey">Checks:</h1>
+								<h1 style="font-size: 20px; line-height:5px; color: grey">Forms:</h1>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane fade" id=	"service-two">
+					<div class="col-md-12">
+			            <div class="panel panel-default">
+			                <div class="panel-heading">
+								<h4 style="font-size: 20px;"><i class="fa fa-briefcase"></i> DECA Materials</h4>
+			                </div>
+			                <div class="panel-body">
+								<h2 style="font-size: 20px; line-height:5px; color: grey">Coming soon.</h2>
+			                </div>
+			            </div>
+			        </div>
+				</div>
+                <div class="tab-pane fade" id="service-three">
+					<div class="col-md-12">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 style="font-size: 20px;"><i class="fa fa-briefcase"></i> FBLA Materials</h4>
+							</div>
+							<div class="panel-body">
+								<h2><a style="font-size: 18px; line-height:0px" href="https://drive.google.com/drive/u/0/folders/0B7x5K6sEPxSpYXA5UXQ2TmswSms"> Practice Materials </a></h2>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane fade" id="service-four">
+					<div class="col-md-12">
+			            <div class="panel panel-default">
+			                <div class="panel-heading">
+								<h4 style="font-size: 20px"><i class="fa fa-user"></i> Profile Information</h4>
+			                </div>
+			                <div class="panel-body">
+								<form method="post">
+									<div class="form-group">
+
+									    <label>First Name</label>
+									    <input type="text" class="form-control" name="firstName" value="<%= user.firstName %>">
+									    <label>Last Name</label>
+									    <input type="text" class="form-control" name="lastName" value="<%= user.lastName %>">
+										<label>Email</label>
+									    <input type="text" class="form-control" name="email" value="<%= user.email %>">
+									    <label>Grade</label>
+									    <select name="grade" class="form-control" id="grade" selected=<%= user.year %>>
+									        <%
+									            var options = ["Freshman", "Sophomore", "Junior", "Senior"]
+									            for(var i = 0; i < options.length; i++) { %>
+									                <option <% if (user.year == options[i]) { %>selected<% } %> >  <%= options[i] %>  </option>
+									            <% }
+									        %>
+									    </select>
+										<label for="phoneNumber">Phone Number</label>
+										<input type="tel" class="form-control" name="phoneNumber" value="<%= user.phoneNumber %>">
+										<label>Birthday</label>
+									    <input type="date" class="form-control" name="birthday" value="<%= user.birthday %>">
+									    <label>Student ID</label>
+									    <input type="text" class="form-control" name="studentID" value="<%= user.studentID %>">
+									    <label>Parent/Guardian 1 Email</label>
+									    <input type="text" class="form-control" name="parent1email" value="<%= user.parent1email %>">
+									    <label>Parent/Guardian 2 Email</label>
+									    <input type="text" class="form-control" name="parent2email" value="<%= user.parent2email %>">
+									</div>
+								<button type="submit" name="submitbutton" class="btn btn-wide">Update</button>
+								</form>
+			                </div>
+			            </div>
+			        </div>
+				</div>
+            </div>
+        </div>
+	</div>
+
+	<div class="modal fade" id="DECAcancel" tabindex="-1" role="dialog" aria-labelledby="contactLabel" aria-hidden="true">
+	    <div style="margin: 200px auto;" class="modal-dialog">
+	        <div class="modal-content">
+	            <div class="modal-header">
+	                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+	                <h3 class="modal-title" id="contactLabel">Are you sure?</h3>
+	            </div>
+	            <div class="modal-body">
+					Are you sure you want to cancel signups?
+	            </div>
+	            <div class="confirm-modal-footer">
+					<label style="margin-top: 0px; padding-top: 16px;" for="deca-submit-form" role="button" class="btn btn-default" tabindex="0">YES</label>
+					<button type="button" class="btn btn-default" data-dismiss="modal">NO</button>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+
+	<div class="modal fade" id="FBLAcancel" tabindex="-1" role="dialog" aria-labelledby="contactLabel" aria-hidden="true">
+	    <div style="margin: 200px auto;" class="modal-dialog">
+	        <div class="modal-content">
+	            <div class="modal-header">
+	                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+	                <h3 class="modal-title" id="contactLabel">Are you sure?</h3>
+	            </div>
+	            <div class="modal-body">
+	                Are you sure you want to cancel signups?
+	            </div>
+	            <div class="confirm-modal-footer">
+					<label style="margin-top: 0px; padding-top: 16px;" for="fbla-submit-form" role="button" class="btn btn-default" tabindex="0">YES</label>
+					<button type="button" class="btn btn-default" data-dismiss="modal">NO</button>
+	            </div>
+	        </div>
+	    </div>
 	</div>
 
 	<!-- Footer -->
@@ -86,7 +183,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.js"></script>
 
 	<!-- Bootstrap Core JavaScript -->
-	<script src="javascripts/bootstrap.min.js"></script>
+	<script src="/javascripts/bootstrap.min.js"></script>
 
 	<!-- Custom JavaScript -->
 
