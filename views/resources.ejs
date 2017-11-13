@@ -65,8 +65,26 @@
 								<h1 style="font-size: 20px; line-height:5px; color: grey">FBLA Events:</h1>
 								<h1 style="font-size: 20px; line-height:5px; color: grey">Teams:</h1>
 								<h1 style="font-size: 20px; line-height:5px; color: grey">Conferences:</h1>
-								<h1 style="font-size: 20px; line-height:5px; color: grey">Checks:</h1>
-								<h1 style="font-size: 20px; line-height:5px; color: grey">Forms:</h1>
+								<h1 style="font-size: 20px; line-height:5px; color: grey">Checks:<% if (user.FBLA_regionalsForms == null){
+									%>
+									<font style="color:red;">Not Submitted</font>
+									<%
+								}	else{
+									%>
+									<font style="color:green">Submitted</font>
+									<%
+								}
+								%></h1>
+								<h1 style="font-size: 20px; line-height:5px; color: grey">Forms:<% if (user.FBLA_regionalsChecks == null){
+									%>
+									<font style="color:red;">Not Submitted</font>
+									<%
+								}	else{
+									%>
+									<font style="color:green">Submitted</font>
+									<%
+								}
+								%></h1>
 							</div>
 						</div>
 					</div>
