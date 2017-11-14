@@ -13,7 +13,17 @@
     <link href="/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
+    <style>
+        a.fc-day-grid-event {
+           pointer-events: none;
+           cursor: default;
+        }
+        button:focus {
+            outline: none;
+        }
+    </style>
     <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/fullcalendar.min.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -35,6 +45,7 @@
     <!-- Page Content -->
      <div class="container">
         <div class="row heading">
+            <div id='calendar' style="margin-top:15px"></div>
             <h1>Conferences</h1>
         </div>
     </div>
@@ -88,14 +99,60 @@
     <%- include('partials/contact') %>
 
     <!-- jQuery -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.js"></script>
+    <script src='javascripts/lib/jquery.min.js'></script>
+    <script src='javascripts/lib/moment.min.js'></script>
+    <script src='javascripts/fullcalendar.min.js'></script>
+    <script src="javascripts/gcal.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="javascripts/bootstrap.min.js"></script>
 
     <!-- Custom JavaScript -->
+    <script>
 
+    	$(document).ready(function() {
 
+    		$('#calendar').fullCalendar({
 
+    			header: {
+    				left: 'prev,next today',
+    				center: 'title',
+    				right: 'month,listYear'
+    			},
+
+    			displayEventTime: false, // don't show the time column in list view
+
+    			// THIS KEY WON'T WORK IN PRODUCTION!!!
+    			// To make your own Google API key, follow the directions here:
+    			// http://fullcalendar.io/docs/google_calendar/
+                googleCalendarApiKey: 'AIzaSyCCAdUcIVHvtfEHMGLKnmsPqGGZyCmDClw',
+
+    			// US Holidays
+    			events: {
+                        googleCalendarId: 'en.usa#holiday@group.v.calendar.google.com',
+                        color: '#008e8e',
+                        textColor: 'white' },
+
+    			eventClick: function(event) {
+    				// opens events in a popup window
+    				// window.open(event.url, 'gcalevent', 'width=700,height=600');
+    				return false;
+    			},
+
+    			loading: function(bool) {
+    				$('#loading').toggle(bool);
+    			},
+
+                buttonText: {
+                    today:  'Today',
+                    list:  'List',
+                    month:  'Month',
+                }
+
+    		});
+
+    	});
+
+    </script>
 
 </body></html>
