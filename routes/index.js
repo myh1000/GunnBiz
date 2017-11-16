@@ -15,7 +15,7 @@ module.exports = function(app, passport){
 
     /* GET home page. */
     app.get('/', function(req, res, next) {
-      res.render('home', { title: 'Home - Gunn Business' });
+      res.render('home', { title: 'Gunn Business' });
     });
 	app.get('/news', function(req, res, next) {
       res.render('news', { title: 'News - Gunn Business' });
